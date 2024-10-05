@@ -32,7 +32,9 @@ namespace LearnTDD.Module_3
         {
             yield return new object[] { 0.1f, 0.1f, new float[] { 0.0f } };
             yield return new object[] { 0.02f, 0.01f, new float[] { 0.01f } };
-
+            yield return new object[] { 0.03f, 0.01f, new float[] { 0.01f, 0.01f } };
+            yield return new object[] { 0.04f, 0.01f, new float[] { 0.01f, 0.01f, 0.01f } };
+            yield return new object[] { 0.05f, 0.01f, new float[] { 0.01f, 0.01f, 0.01f, 0.01f } };
         }
     }
     public class ChangeCalculator
@@ -41,9 +43,10 @@ namespace LearnTDD.Module_3
         {
             List<float> result = new List<float>();
             float change = given - toPay;
-            if(change > 0)
+            while(change > 0)
             {
-                result.Add(change);
+                result.Add(0.01f);
+                change = change - 0.01f;
             }
             return result;
         }
