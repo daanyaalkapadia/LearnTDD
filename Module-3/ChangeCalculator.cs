@@ -1,11 +1,4 @@
 ﻿using FluentAssertions;
-using LearnTDD.Module_2;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace LearnTDD.Module_3
 {
@@ -24,7 +17,7 @@ namespace LearnTDD.Module_3
             List<float> result = _changeCalculator.GetChange(given, toPay);
 
             //Assert
-            for (int i = 0; i < result.Count; i++) 
+            for (int i = 0; i < result.Count; i++)
             {
                 result[i].Should().Be(change[i]);
             }
@@ -43,17 +36,18 @@ namespace LearnTDD.Module_3
             yield return new object[] { 0.10f, 0.01f, new float[] { 0.05f, 0.01f, 0.01f, 0.01f, 0.01f } };
             yield return new object[] { 0.11f, 0.01f, new float[] { 0.10f } };
             yield return new object[] { 0.20f, 0.01f, new float[] { 0.10f, 0.05f, 0.01f, 0.01f, 0.01f, 0.01f } };
-            yield return new object[] { 0.21f, 0.01f, new float[] { 0.10f, 0.10f, } };
+            yield return new object[] { 0.21f, 0.01f, new float[] { 0.10f, 0.10f } };
+            yield return new object[] { 0.26f, 0.01f, new float[] { 0.25f } };
         }
     }
     public class ChangeCalculator
     {
-        List<float> denomination = new List<float>() { 0.10f,0.05f,0.01f };
+        List<float> denomination = new List<float>() { 0.25f, 0.10f, 0.05f, 0.01f };
         internal List<float> GetChange(float given, float toPay)
         {
             List<float> result = new List<float>();
             float change = (float)Math.Round(given - toPay, 2);
-            if(change == 0)
+            if (change == 0)
             {
                 return result;
             }
