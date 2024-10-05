@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("LearnTDD")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+df703b6b3d7ab877dbaa84d6b6ab937dea0cbd5e")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+8dff3d168e5d5d150812663ef523602c9dec871e")]
 [assembly: System.Reflection.AssemblyProductAttribute("LearnTDD")]
 [assembly: System.Reflection.AssemblyTitleAttribute("LearnTDD")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

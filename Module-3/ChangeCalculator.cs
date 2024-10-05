@@ -43,6 +43,7 @@ namespace LearnTDD.Module_3
             yield return new object[] { 0.10f, 0.01f, new float[] { 0.05f, 0.01f, 0.01f, 0.01f, 0.01f } };
             yield return new object[] { 0.11f, 0.01f, new float[] { 0.10f } };
             yield return new object[] { 0.20f, 0.01f, new float[] { 0.10f, 0.05f, 0.01f, 0.01f, 0.01f, 0.01f } };
+            yield return new object[] { 0.21f, 0.01f, new float[] { 0.10f, 0.10f, } };
         }
     }
     public class ChangeCalculator
