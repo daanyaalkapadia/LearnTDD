@@ -46,25 +46,21 @@ namespace LearnTDD.Module_3
     }
     public class ChangeCalculator
     {
-        List<float> denomination = new List<float>() { 0.10f };
+        List<float> denomination = new List<float>() { 0.10f,0.05f,0.01f };
         internal List<float> GetChange(float given, float toPay)
         {
             List<float> result = new List<float>();
             float change = (float)Math.Round(given - toPay, 2);
+            if(change == 0)
+            {
+                return result;
+            }
             if (denomination.Any(x => x >= change))
             {
-                float denominationValue = denomination.FirstOrDefault(x => x >= change);
+                float denominationValue = denomination.FirstOrDefault(x => x <= change);
+                result.Add(denominationValue);
                 change = (float)Math.Round(change - denominationValue, 2);
-            }
-            if (change >= 0.05)
-            {
-                result.Add(0.05f);
-                change = (float)Math.Round(change - 0.05f, 2);
-            }
-            while(change > 0)
-            {
-                result.Add(0.01f);
-                change = (float)Math.Round(change - 0.01f, 2);
+                result.AddRange(GetChange(change + change, change));
             }
             return result;
         }
