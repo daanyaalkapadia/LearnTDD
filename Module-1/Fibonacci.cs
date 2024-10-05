@@ -1,6 +1,6 @@
 ﻿using FluentAssertions;
 
-namespace LearnTDD
+namespace LearnTDD.Module_1
 {
     public class FibonacciShould
     {
