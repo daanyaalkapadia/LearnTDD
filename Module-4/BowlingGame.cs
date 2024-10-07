@@ -60,10 +60,6 @@ namespace LearnTDD.Module_4
 
             Validate(input);
 
-            if (input == "-/|-/|-/|-/|-/|-/|-/|-/|-/|1-")
-            {
-                return 92;
-            }
             if (input == "-/|-/|-/|-/|4-|-/|-/|-/|-/|--")
             {
                 return 88;
@@ -79,6 +75,10 @@ namespace LearnTDD.Module_4
                 if (frameArray[i][1] == '/')
                 {
                     result += 10;
+                    if (int.TryParse(frameArray[i+1][0].ToString(), out int numberOfPinKnockedDownInNextBall))
+                    {
+                        result += numberOfPinKnockedDownInNextBall;
+                    }                    
                     continue;
                 }
                 if (int.TryParse(frameArray[i][0].ToString(), out int firstNumber))
