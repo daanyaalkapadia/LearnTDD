@@ -17,6 +17,9 @@ namespace LearnTDD.Module_4
         }
         [Theory]
         [InlineData("")]
+        [InlineData("--|")]
+        [InlineData("--|--|")]
+        [InlineData("--|--|--|")]
         public void Return_0(string input)
         {
             Action act = () => _bowlingGameShould.Play(input);
