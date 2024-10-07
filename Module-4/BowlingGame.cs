@@ -33,7 +33,7 @@ namespace LearnTDD.Module_4
         [InlineData("21|21|21|21|21|21|21|21|21|21", 30)]
         [InlineData("23|23|23|23|23|23|23|23|23|23", 50)]
         [InlineData("44|44|44|44|44|44|44|44|44|44", 80)]
-        public void Return_Result(string input, int output)
+        public void Return_Result_Excluding_Spare_And_Strike(string input, int output)
         {
             int result = _bowlingGameShould.Play(input);
 
