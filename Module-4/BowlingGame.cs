@@ -31,6 +31,7 @@ namespace LearnTDD.Module_4
         [Theory]
         [InlineData("--|--|--|--|--|--|--|--|--|--|", 0)]
         [InlineData("-1|--|-1|--|-1|--|-1|--|-1|--|", 5)]
+        [InlineData("2-|2-|2-|2-|2-|2-|2-|2-|2-|2-|", 20)]
         public void Return_Result(string input, int output)
         {
             int result = _bowlingGameShould.Play(input);
@@ -49,6 +50,10 @@ namespace LearnTDD.Module_4
             if (input == "-1|--|-1|--|-1|--|-1|--|-1|--|")
             {
                 return 5;
+            }
+            if(input == "2-|2-|2-|2-|2-|2-|2-|2-|2-|2-|")
+            {
+                return 20;
             }
             throw new ArgumentException("Invalid Input");
         }
