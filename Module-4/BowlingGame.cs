@@ -83,6 +83,9 @@ namespace LearnTDD.Module_4
         [InlineData("X|X|X|X|X|X|X|X|X|22", 250)]
         //mix
         [InlineData("X|--|X|1/|-9|--|X|X|-9|--", 97)]
+        [InlineData("X|X|4/|1/|9/|X|X|X|9/|-1", 184)]
+        [InlineData("X|--|X|1/|-9|5/|X|X|X|33", 144)]
+        [InlineData("--|43|X|1/|9/|--|X|X|9/|9-", 133)]
         public void Return_Result_Including_Strike_Not_In_Last_Frame(string input, int output)
         {
             int result = _bowlingGameShould.Play(input);
