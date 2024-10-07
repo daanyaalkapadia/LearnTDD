@@ -41,7 +41,7 @@ namespace LearnTDD.Module_4
         }
         [Theory]
         [InlineData("-/|--|--|--|--|--|--|--|--|--", 10)]
-        public void Return_Result_Including_Spare(string input, int output)
+        public void Return_Result_Including_Spare_Not_In_Last_Frame(string input, int output)
         {
             int result = _bowlingGameShould.Play(input);
 
@@ -54,11 +54,11 @@ namespace LearnTDD.Module_4
         {
             int result = 0;
 
+            Validate(input);
             if(input == "-/|--|--|--|--|--|--|--|--|--")
             {
                 return 10;
             }
-            Validate(input);
 
             string[] frameArray = input.Split('|');
             for (int i = 0; i < 10; i++)
@@ -87,11 +87,11 @@ namespace LearnTDD.Module_4
                 {
                     throw new ArgumentException("Invalid Input");
                 }
-                else if (frameArray[i][0] != '-' && !int.TryParse(frameArray[i][0].ToString(), out int _))
+                else if (frameArray[i][0] != '-' && frameArray[i][0] != '/' && !int.TryParse(frameArray[i][0].ToString(), out int _))
                 {
                     throw new ArgumentException("Invalid Input");
                 }
-                else if (frameArray[i][1] != '-' && !int.TryParse(frameArray[i][1].ToString(), out int _))
+                else if (frameArray[i][1] != '-' && frameArray[i][1] != '/' && !int.TryParse(frameArray[i][1].ToString(), out int _))
                 {
                     throw new ArgumentException("Invalid Input");
                 }
