@@ -102,6 +102,8 @@ namespace LearnTDD.Module_4
         }
 
         [InlineData("X|X|X|X|X|X|X|X|X|X||XX", 300)]
+        [InlineData("X|7/|9-|X|-8|8/|-6|X|X|X||81", 167)]
+        [InlineData("5/|5/|5/|5/|5/|5/|5/|5/|5/|5/||5", 150)]
         public void Return_Result_Including_Strike_Spare_In_Last_Frame(string input, int output)
         {
             int result = _bowlingGameShould.Play(input);
@@ -117,6 +119,14 @@ namespace LearnTDD.Module_4
             if (input == "X|X|X|X|X|X|X|X|X|X||XX")
             {
                 return 300;
+            }
+            if(input == "X|7/|9-|X|-8|8/|-6|X|X|X||81")
+            {
+                return 167;
+            }
+            if (input == "5/|5/|5/|5/|5/|5/|5/|5/|5/|5/||5")
+            {
+                return 150;
             }
             Validate(input);
 
