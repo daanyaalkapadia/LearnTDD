@@ -62,17 +62,18 @@ namespace LearnTDD.Module_4
             result.Should().Be(output);
         }
         [Theory]
+        //No Value in next 2 balls
         [InlineData("X|--|--|--|--|--|--|--|--|--", 10)]
         [InlineData("X|--|X|--|X|--|X|--|X|--", 50)]
         [InlineData("-9|--|X|--|-9|--|X|--|-9|--", 47)]
-        //Consider the total of the pins knocked down in the next two balls 
+        //Numeric value in next 2 balls
         [InlineData("-9|--|X|1-|-9|--|X|1-|-9|--", 51)]
         [InlineData("-9|--|X|11|-9|--|X|11|-9|--", 55)]
         //next 2 balls spare
         [InlineData("-9|--|X|1/|-9|--|X|7/|-9|--", 87)]
         [InlineData("-9|--|X|1/|--|8/|--|7/|-9|--", 68)]
         [InlineData("-9|--|X|1/|--|X|5/|44|5/|45", 104)]
-        //next two balls not number
+        //X in next 2 balls.
         [InlineData("X|X|X|X|X|X|X|X|X|--", 240)]
         [InlineData("X|X|X|X|X|X|X|X|X|22", 250)]
         public void Return_Result_Including_Strike_Not_In_Last_Frame(string input, int output)
