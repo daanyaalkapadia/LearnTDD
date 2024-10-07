@@ -29,10 +29,10 @@ namespace LearnTDD.Module_4
             .WithMessage("*Invalid Input*");
         }
         [Theory]
-        [InlineData("--|--|--|--|--|--|--|--|--|--|", 0)]
-        [InlineData("-1|--|-1|--|-1|--|-1|--|-1|--|", 5)]
-        [InlineData("2-|2-|2-|2-|2-|2-|2-|2-|2-|2-|", 20)]
-        [InlineData("-9|-9|-9|-9|-9|-9|-9|-9|-9|-9|", 90)]
+        [InlineData("--|--|--|--|--|--|--|--|--|--", 0)]
+        [InlineData("-1|--|-1|--|-1|--|-1|--|-1|--", 5)]
+        [InlineData("2-|2-|2-|2-|2-|2-|2-|2-|2-|2-", 20)]
+        [InlineData("-9|-9|-9|-9|-9|-9|-9|-9|-9|-9", 90)]
         public void Return_Result(string input, int output)
         {
             int result = _bowlingGameShould.Play(input);
@@ -44,23 +44,28 @@ namespace LearnTDD.Module_4
     {
         public int Play(string input)
         {
-            if(input == "--|--|--|--|--|--|--|--|--|--|")
+            string[] frameArray = input.Split('|');
+            if(frameArray.Length != 10 )
+            {
+                throw new ArgumentException("Invalid Input");
+            }
+            if(input == "--|--|--|--|--|--|--|--|--|--")
             {
                 return 0;
             }
-            if (input == "-1|--|-1|--|-1|--|-1|--|-1|--|")
+            if (input == "-1|--|-1|--|-1|--|-1|--|-1|--")
             {
                 return 5;
             }
-            if(input == "2-|2-|2-|2-|2-|2-|2-|2-|2-|2-|")
+            if(input == "2-|2-|2-|2-|2-|2-|2-|2-|2-|2-")
             {
                 return 20;
             }
-            if(input == "-9|-9|-9|-9|-9|-9|-9|-9|-9|-9|")
+            if(input == "-9|-9|-9|-9|-9|-9|-9|-9|-9|-9")
             {
                 return 90;
             }
-            throw new ArgumentException("Invalid Input");
+            return 0;
         }
     }
 }
