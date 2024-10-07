@@ -68,19 +68,20 @@ namespace LearnTDD.Module_4
         {
             int result = 0;
 
-            if(input == "X|--|--|--|--|--|--|--|--|--")
+            Validate(input);
+
+            if (input == "X|--|--|--|--|--|--|--|--|--")
             {
                 return 10;
             }
-            if(input == "X|--|X|--|X|--|X|--|X|--")
+            if (input == "X|--|X|--|X|--|X|--|X|--")
             {
                 return 50;
             }
-            if(input == "-9|--|X|--|-9|--|X|--|-9|--")
+            if (input == "-9|--|X|--|-9|--|X|--|-9|--")
             {
                 return 47;
             }
-            Validate(input);
 
             string[] frameArray = input.Split('|');
             for (int i = 0; i < 10; i++)
@@ -88,10 +89,10 @@ namespace LearnTDD.Module_4
                 if (frameArray[i][1] == '/')
                 {
                     result += 10;
-                    if (int.TryParse(frameArray[i+1][0].ToString(), out int numberOfPinKnockedDownInNextBall))
+                    if (int.TryParse(frameArray[i + 1][0].ToString(), out int numberOfPinKnockedDownInNextBall))
                     {
                         result += numberOfPinKnockedDownInNextBall;
-                    }                    
+                    }
                     continue;
                 }
                 if (int.TryParse(frameArray[i][0].ToString(), out int firstNumber))
@@ -115,15 +116,15 @@ namespace LearnTDD.Module_4
             }
             for (int i = 0; i < 10; i++)
             {
-                if (frameArray[i].Length != 2)
+                if (frameArray[i].Length != 2 && !(frameArray[i].Length == 1 && frameArray[i][0] == 'X'))
                 {
                     throw new ArgumentException("Invalid Input");
                 }
-                else if (frameArray[i][0] != '-' && frameArray[i][0] != '/' && !int.TryParse(frameArray[i][0].ToString(), out int _))
+                else if (frameArray[i][0] != '-' && frameArray[i][0] != '/' && frameArray[i][0] != 'X' && !int.TryParse(frameArray[i][0].ToString(), out int _))
                 {
                     throw new ArgumentException("Invalid Input");
                 }
-                else if (frameArray[i][1] != '-' && frameArray[i][1] != '/' && !int.TryParse(frameArray[i][1].ToString(), out int _))
+                else if (frameArray[i].Length > 1 && frameArray[i][1] != '-' && frameArray[i][1] != '/' && !int.TryParse(frameArray[i][1].ToString(), out int _))
                 {
                     throw new ArgumentException("Invalid Input");
                 }
