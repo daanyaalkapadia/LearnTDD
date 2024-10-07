@@ -56,14 +56,6 @@ namespace LearnTDD.Module_4
             int result = 0;
 
             Validate(input);
-            if(input == "-/|--|--|--|--|--|--|--|--|--")
-            {
-                return 10;
-            }
-            if (input == "-/|--|-/|--|--|--|--|--|--|--")
-            {
-                return 20;
-            }
             
             string[] frameArray = input.Split('|');
             for (int i = 0; i < 10; i++)
