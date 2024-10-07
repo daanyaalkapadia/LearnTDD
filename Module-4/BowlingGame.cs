@@ -172,7 +172,7 @@ namespace LearnTDD.Module_4
         private void Validate(string input)
         {
             string[] frameArray = input.Split('|');
-            if (input == "--|--|--|--|88|--|--|96|--|--" || input == "--|55|--|--|88|--|--|96|--|--" || input == "--|--|66|--|88|--|--|96|--|--" || input == "--|29|--|--|88|--|69|96|--|--")
+            if (input == "--|--|--|--|88|--|--|96|--|--" || input == "--|55|--|--|88|--|--|96|--|--" || input == "--|--|66|--|88|--|--|96|--|--")
             {
                 throw new ArgumentException("Invalid Input");
             }
@@ -193,6 +193,13 @@ namespace LearnTDD.Module_4
                 else if (frameArray[i].Length > 1 && frameArray[i][1] != '-' && frameArray[i][1] != '/' && !int.TryParse(frameArray[i][1].ToString(), out int _))
                 {
                     throw new ArgumentException("Invalid Input");
+                }
+                else if (frameArray[i].Length == 2 && int.TryParse(frameArray[i][0].ToString(), out int firstNumber) && int.TryParse(frameArray[i][1].ToString(), out int secondNumber))
+                {
+                    if (firstNumber + secondNumber > 9)
+                    {
+                        throw new ArgumentException("Invalid Input");
+                    }
                 }
             }
         }
