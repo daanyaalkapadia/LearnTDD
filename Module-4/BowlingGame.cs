@@ -71,7 +71,7 @@ namespace LearnTDD.Module_4
         //next 2 balls spare
         [InlineData("-9|--|X|1/|-9|--|X|7/|-9|--", 87)]
         [InlineData("-9|--|X|1/|--|8/|--|7/|-9|--", 68)]
-        [InlineData("-9|--|X|1/|--|X|5/|44|5/|7/", 98)]
+        [InlineData("-9|--|X|1/|--|X|5/|44|5/|45", 104)]
         //next two balls not number
         [InlineData("X|X|X|X|X|X|X|X|X|--", 240)]
         [InlineData("X|X|X|X|X|X|X|X|X|22", 250)]
