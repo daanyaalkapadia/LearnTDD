@@ -49,22 +49,10 @@ namespace LearnTDD.Module_4
                 {
                     result += firstNumber;
                 }
-                if (int.TryParse(frameArray[i][0].ToString(), out int secondNumber))
+                if (int.TryParse(frameArray[i][1].ToString(), out int secondNumber))
                 {
                     result += secondNumber;
                 }
-            }
-            if (input == "-1|--|-1|--|-1|--|-1|--|-1|--")
-            {
-                return 5;
-            }
-            if (input == "2-|2-|2-|2-|2-|2-|2-|2-|2-|2-")
-            {
-                return 20;
-            }
-            if (input == "-9|-9|-9|-9|-9|-9|-9|-9|-9|-9")
-            {
-                return 90;
             }
             return result;
         }
