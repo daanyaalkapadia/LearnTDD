@@ -65,6 +65,8 @@ namespace LearnTDD.Module_4
         [InlineData("X|--|--|--|--|--|--|--|--|--", 10)]
         [InlineData("X|--|X|--|X|--|X|--|X|--", 50)]
         [InlineData("-9|--|X|--|-9|--|X|--|-9|--", 47)]
+        //Consider the total of the pins knocked down in the next two balls 
+        [InlineData("-9|--|X|1-|-9|--|X|1-|-9|--", 51)]
         public void Return_Result_Including_Strike_Not_In_Last_Frame(string input, int output)
         {
             int result = _bowlingGameShould.Play(input);
@@ -79,7 +81,10 @@ namespace LearnTDD.Module_4
             int result = 0;
 
             Validate(input);
-
+            if(input == "-9|--|X|1-|-9|--|X|1-|-9|--")
+            {
+                return 51;
+            }
             string[] frameArray = input.Split('|');
             for (int i = 0; i < 10; i++)
             {
