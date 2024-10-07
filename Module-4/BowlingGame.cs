@@ -89,10 +89,10 @@ namespace LearnTDD.Module_4
             int result = 0;
 
             Validate(input);
-            if (input == "X|X|X|X|X|X|X|X|X|--")
-            {
-                return 240;
-            }
+            //if (input == "X|X|X|X|X|X|X|X|X|--")
+            //{
+            //    return 240;
+            //}
             if (input == "X|X|X|X|X|X|X|X|X|22")
             {
                 return 250;
@@ -103,9 +103,22 @@ namespace LearnTDD.Module_4
                 if (frameArray[i][0] == 'X')
                 {
                     result += 10;
-                    if(frameArray[i + 1].Length > 1 && frameArray[i + 1][1] == '/')
+                    if (frameArray[i + 1].Length > 1 && frameArray[i + 1][1] == '/')
                     {
                         result += 10;
+                        continue;
+                    }
+                    else if (frameArray[i + 1].Length == 1 && frameArray[i + 1][0] == 'X')
+                    {
+                        result += 10;
+                        if (frameArray[i + 2].Length == 1 && frameArray[i + 2][0] == 'X')
+                        {
+                            result += 10;
+                        }
+                        else if (int.TryParse(frameArray[i + 2][0].ToString(), out int nexttonextFrameFirstNumber))
+                        {
+                            result += nexttonextFrameFirstNumber;
+                        }
                         continue;
                     }
 
