@@ -64,14 +64,15 @@ namespace LearnTDD.Module_4
             {
                 return 20;
             }
-            if(input == "-/|-/|-/|-/|-/|-/|-/|-/|-/|--")
-            {
-                return 90;
-            }
             
             string[] frameArray = input.Split('|');
             for (int i = 0; i < 10; i++)
             {
+                if (frameArray[i][1] == '/')
+                {
+                    result += 10;
+                    continue;
+                }
                 if (int.TryParse(frameArray[i][0].ToString(), out int firstNumber))
                 {
                     result += firstNumber;
@@ -80,6 +81,7 @@ namespace LearnTDD.Module_4
                 {
                     result += secondNumber;
                 }
+                
             }
             return result;
         }
