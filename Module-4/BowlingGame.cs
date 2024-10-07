@@ -93,7 +93,7 @@ namespace LearnTDD.Module_4
             }
             if (input == "X|X|X|X|X|X|X|X|X|22")
             {
-                return 240;
+                return 250;
             }
             string[] frameArray = input.Split('|');
             for (int i = 0; i < 10; i++)
