@@ -89,14 +89,7 @@ namespace LearnTDD.Module_4
             int result = 0;
 
             Validate(input);
-            //if (input == "X|X|X|X|X|X|X|X|X|--")
-            //{
-            //    return 240;
-            //}
-            if (input == "X|X|X|X|X|X|X|X|X|22")
-            {
-                return 250;
-            }
+
             string[] frameArray = input.Split('|');
             for (int i = 0; i < 10; i++)
             {
