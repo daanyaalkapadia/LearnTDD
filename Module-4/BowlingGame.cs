@@ -45,6 +45,24 @@ namespace LearnTDD.Module_4
         public int Play(string input)
         {
             int result = 0;
+            Validate(input);
+
+            string[] frameArray = input.Split('|');
+            for (int i = 0; i < 10; i++)
+            {
+                if (int.TryParse(frameArray[i][0].ToString(), out int firstNumber))
+                {
+                    result += firstNumber;
+                }
+                if (int.TryParse(frameArray[i][1].ToString(), out int secondNumber))
+                {
+                    result += secondNumber;
+                }
+            }
+            return result;
+        }
+        private void Validate(string input)
+        {
             string[] frameArray = input.Split('|');
             if (frameArray.Length != 10)
             {
@@ -56,24 +74,15 @@ namespace LearnTDD.Module_4
                 {
                     throw new ArgumentException("Invalid Input");
                 }
-                if (int.TryParse(frameArray[i][0].ToString(), out int firstNumber))
-                {
-                    result += firstNumber;
-                }
-                else if (frameArray[i][0] != '-')
+                else if (frameArray[i][0] != '-' && !int.TryParse(frameArray[i][0].ToString(), out int _))
                 {
                     throw new ArgumentException("Invalid Input");
                 }
-                if (int.TryParse(frameArray[i][1].ToString(), out int secondNumber))
-                {
-                    result += secondNumber;
-                }
-                else if (frameArray[i][1] != '-')
+                else if (frameArray[i][1] != '-' && !int.TryParse(frameArray[i][1].ToString(), out int _))
                 {
                     throw new ArgumentException("Invalid Input");
                 }
             }
-            return result;
         }
     }
 }
