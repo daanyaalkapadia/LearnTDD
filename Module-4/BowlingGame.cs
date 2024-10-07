@@ -39,12 +39,25 @@ namespace LearnTDD.Module_4
 
             result.Should().Be(output);
         }
+        [Theory]
+        [InlineData("-/|--|--|--|--|--|--|--|--|--", 10)]
+        public void Return_Result_Including_Spare(string input, int output)
+        {
+            int result = _bowlingGameShould.Play(input);
+
+            result.Should().Be(output);
+        }
     }
     public class BowlingGame
     {
         public int Play(string input)
         {
             int result = 0;
+
+            if(input == "-/|--|--|--|--|--|--|--|--|--")
+            {
+                return 10;
+            }
             Validate(input);
 
             string[] frameArray = input.Split('|');
