@@ -88,14 +88,15 @@ namespace LearnTDD.Module_4
             {
                 return 50;
             }
-            if (input == "-9|--|X|--|-9|--|X|--|-9|--")
-            {
-                return 47;
-            }
 
             string[] frameArray = input.Split('|');
             for (int i = 0; i < 10; i++)
             {
+                if (frameArray[i][0] == 'X')
+                {
+                    result += 10;
+                    continue;
+                }
                 if (frameArray[i][1] == '/')
                 {
                     result += 10;
@@ -126,7 +127,7 @@ namespace LearnTDD.Module_4
                 {
                     throw new ArgumentException("Invalid Input");
                 }
-                else if(frameArray[i].Length == 2 && frameArray[i][0] == 'X')
+                else if (frameArray[i].Length == 2 && frameArray[i][0] == 'X')
                 {
                     throw new ArgumentException("Invalid Input");
                 }
