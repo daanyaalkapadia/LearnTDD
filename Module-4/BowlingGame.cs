@@ -128,13 +128,13 @@ namespace LearnTDD.Module_4
             {
                 throw new ArgumentException("Invalid Input");
             }
-            if (frameArray.Length != 10)
-            {
-                throw new ArgumentException("Invalid Input");
-            }
             for (int i = 0; i < 10; i++)
             {
                 if (frameArray[i].Length != 2 && !(frameArray[i].Length == 1 && frameArray[i][0] == 'X'))
+                {
+                    throw new ArgumentException("Invalid Input");
+                }
+                else if(frameArray[i].Length == 2 && frameArray[i][0] == 'X')
                 {
                     throw new ArgumentException("Invalid Input");
                 }
