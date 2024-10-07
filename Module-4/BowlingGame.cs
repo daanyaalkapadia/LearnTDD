@@ -35,10 +35,13 @@ namespace LearnTDD.Module_4
             .WithMessage("*Invalid Input*");
         }
         [Theory]
+        //Empty
         [InlineData("--|--|--|--|--|--|--|--|--|--", 0)]
+        //Single Number
         [InlineData("-1|--|-1|--|-1|--|-1|--|-1|--", 5)]
         [InlineData("2-|2-|2-|2-|2-|2-|2-|2-|2-|2-", 20)]
         [InlineData("-9|-9|-9|-9|-9|-9|-9|-9|-9|-9", 90)]
+        //Double Number
         [InlineData("11|11|11|11|11|11|11|11|11|11", 20)]
         [InlineData("21|21|21|21|21|21|21|21|21|21", 30)]
         [InlineData("23|23|23|23|23|23|23|23|23|23", 50)]
