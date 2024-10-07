@@ -15,6 +15,7 @@ namespace LearnTDD.Module_4
         [InlineData("--|--|")]
         [InlineData("--|--|--|")]
         [InlineData("--|--|--|--|--|--|--|--|--|pp")]
+        [InlineData("--|--|--|[]]|--|--|--|--|--|11")]
         public void Throw_Error_For_Invalid_Input(string input)
         {
             Action act = () => _bowlingGameShould.Play(input);
