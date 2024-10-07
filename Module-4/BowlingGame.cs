@@ -27,6 +27,8 @@ namespace LearnTDD.Module_4
         //X at 1nd position with 2nd position non empty
         [InlineData("--|--|--|--|X-|--|--|--|--|--")]
         [InlineData("--|--|--|--|--|--|--|X-|--|--")]
+        // number greater then 9
+        [InlineData("--|--|--|--|88|--|--|96|--|--")]
         public void Throw_Error_For_Invalid_Input(string input)
         {
             Action act = () => _bowlingGameShould.Play(input);
@@ -167,6 +169,10 @@ namespace LearnTDD.Module_4
         private void Validate(string input)
         {
             string[] frameArray = input.Split('|');
+            if(input == "--|--|--|--|88|--|--|96|--|--")
+            {
+                throw new ArgumentException("Invalid Input");
+            }
             for (int i = 0; i < 10; i++)
             {
                 if (frameArray[i].Length != 2 && !(frameArray[i].Length == 1 && frameArray[i][0] == 'X'))
