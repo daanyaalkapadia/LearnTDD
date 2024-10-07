@@ -67,6 +67,8 @@ namespace LearnTDD.Module_4
         [InlineData("-9|--|X|--|-9|--|X|--|-9|--", 47)]
         //Consider the total of the pins knocked down in the next two balls 
         [InlineData("-9|--|X|1-|-9|--|X|1-|-9|--", 51)]
+        [InlineData("-9|--|X|11|-9|--|X|11|-9|--", 55)]
+        //next two balls not number
         [InlineData("X|X|X|X|X|X|X|X|X|--", 240)]
         [InlineData("X|X|X|X|X|X|X|X|X|22", 250)]
         public void Return_Result_Including_Strike_Not_In_Last_Frame(string input, int output)
