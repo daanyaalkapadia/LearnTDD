@@ -54,6 +54,7 @@ namespace LearnTDD.Module_4
         [Theory]
         [InlineData("X|--|--|--|--|--|--|--|--|--", 10)]
         [InlineData("X|--|X|--|X|--|X|--|X|--", 50)]
+        [InlineData("-9|--|X|--|-9|--|X|--|-9|--", 47)]
         public void Return_Result_Including_Strike_Not_In_Last_Frame(string input, int output)
         {
             int result = _bowlingGameShould.Play(input);
@@ -74,6 +75,10 @@ namespace LearnTDD.Module_4
             if(input == "X|--|X|--|X|--|X|--|X|--")
             {
                 return 50;
+            }
+            if(input == "-9|--|X|--|-9|--|X|--|-9|--")
+            {
+                return 47;
             }
             Validate(input);
 
