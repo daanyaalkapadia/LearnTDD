@@ -76,6 +76,8 @@ namespace LearnTDD.Module_4
         //X in next 2 balls.
         [InlineData("X|X|X|X|X|X|X|X|X|--", 240)]
         [InlineData("X|X|X|X|X|X|X|X|X|22", 250)]
+        //mix
+        [InlineData("X|--|X|1/|-9|--|X|X|-9|--", 97)]
         public void Return_Result_Including_Strike_Not_In_Last_Frame(string input, int output)
         {
             int result = _bowlingGameShould.Play(input);
