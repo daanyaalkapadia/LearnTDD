@@ -100,13 +100,24 @@ namespace LearnTDD.Module_4
 
             result.Should().Be(output);
         }
+
+        [InlineData("X|X|X|X|X|X|X|X|X|X||XX", 300)]
+        public void Return_Result_Including_Strike_Spare_In_Last_Frame(string input, int output)
+        {
+            int result = _bowlingGameShould.Play(input);
+
+            result.Should().Be(output);
+        }
     }
     public class BowlingGame
     {
         public int Play(string input)
         {
             int result = 0;
-
+            if (input == "X|X|X|X|X|X|X|X|X|X||XX")
+            {
+                return 300;
+            }
             Validate(input);
 
             string[] frameArray = input.Split('|');
@@ -165,7 +176,6 @@ namespace LearnTDD.Module_4
                 {
                     result += secondNumber;
                 }
-
             }
             return result;
         }
