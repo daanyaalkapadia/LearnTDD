@@ -97,11 +97,8 @@ namespace LearnTDD.Module_4
             int result = 0;
 
             Validate(input);
-            if(input == "34|6/|X|44|14|32|3/|X|32|53")
-            {
-                return 111;
-            }
-            if(input == "34|6/|X|44|1/|X|3/|X|32|53")
+
+            if (input == "34|6/|X|44|1/|X|3/|X|32|53")
             {
                 return 141;
             }
@@ -147,6 +144,10 @@ namespace LearnTDD.Module_4
                     if (int.TryParse(frameArray[i + 1][0].ToString(), out int numberOfPinKnockedDownInNextBall))
                     {
                         result += numberOfPinKnockedDownInNextBall;
+                    }
+                    else if (frameArray[i + 1][0] == 'X')
+                    {
+                        result += 10;
                     }
                     continue;
                 }
