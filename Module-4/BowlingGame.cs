@@ -1,11 +1,4 @@
 ﻿using FluentAssertions;
-using LearnTDD.Module_2;
-using Microsoft.VisualStudio.TestPlatform.Utilities;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace LearnTDD.Module_4
 {
@@ -44,28 +37,36 @@ namespace LearnTDD.Module_4
     {
         public int Play(string input)
         {
+            int result = 0;
             string[] frameArray = input.Split('|');
-            if(frameArray.Length != 10 )
+            if (frameArray.Length != 10)
             {
                 throw new ArgumentException("Invalid Input");
             }
-            if(input == "--|--|--|--|--|--|--|--|--|--")
+            for (int i = 0; i < 10; i++)
             {
-                return 0;
+                if (int.TryParse(frameArray[i][0].ToString(), out int firstNumber))
+                {
+                    result += firstNumber;
+                }
+                if (int.TryParse(frameArray[i][0].ToString(), out int secondNumber))
+                {
+                    result += secondNumber;
+                }
             }
             if (input == "-1|--|-1|--|-1|--|-1|--|-1|--")
             {
                 return 5;
             }
-            if(input == "2-|2-|2-|2-|2-|2-|2-|2-|2-|2-")
+            if (input == "2-|2-|2-|2-|2-|2-|2-|2-|2-|2-")
             {
                 return 20;
             }
-            if(input == "-9|-9|-9|-9|-9|-9|-9|-9|-9|-9")
+            if (input == "-9|-9|-9|-9|-9|-9|-9|-9|-9|-9")
             {
                 return 90;
             }
-            return 0;
+            return result;
         }
     }
 }
