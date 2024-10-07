@@ -18,9 +18,10 @@ namespace LearnTDD.Module_4
         [InlineData("--|--|--|[]]|--|--|--|--|--|11")]
         [InlineData("--|--|--|1|--|--|--|--|--|11")]
         //spare at 1 position
-        [InlineData("--|--|--|1|/-|--|--|--|--|11")]
-        [InlineData("/-|--|--|1|/-|--|--|/-|--|11")]
-        [InlineData("/-|--|--|1|/-|--|--|/-|--|/1")]
+        [InlineData("--|--|--|--|/-|--|--|--|--|11")]
+        [InlineData("/-|--|--|--|/-|--|--|/-|--|11")]
+        [InlineData("/-|--|--|--|/-|--|--|/-|--|/1")]
+        
         public void Throw_Error_For_Invalid_Input(string input)
         {
             Action act = () => _bowlingGameShould.Play(input);
