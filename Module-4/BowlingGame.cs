@@ -41,7 +41,7 @@ namespace LearnTDD.Module_4
         }
         [Theory]
         [InlineData("-/|--|--|--|--|--|--|--|--|--", 10)]
-        [InlineData("-/|--|-/|--|--|--|--|--|--|--", 20)]
+        [InlineData("-/|-/|-/|-/|-/|-/|-/|-/|-/|--", 90)]
         public void Return_Result_Including_Spare_Not_In_Last_Frame(string input, int output)
         {
             int result = _bowlingGameShould.Play(input);
@@ -63,6 +63,10 @@ namespace LearnTDD.Module_4
             if (input == "-/|--|-/|--|--|--|--|--|--|--")
             {
                 return 20;
+            }
+            if(input == "-/|-/|-/|-/|-/|-/|-/|-/|-/|--")
+            {
+                return 90;
             }
             
             string[] frameArray = input.Split('|');
