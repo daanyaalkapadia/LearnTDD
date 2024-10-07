@@ -83,10 +83,6 @@ namespace LearnTDD.Module_4
             int result = 0;
 
             Validate(input);
-            if (input == "-9|--|X|1-|-9|--|X|1-|-9|--")
-            {
-                return 51;
-            }
             if (input == "X|X|X|X|X|X|X|X|X|--")
             {
                 return 240;
@@ -101,6 +97,14 @@ namespace LearnTDD.Module_4
                 if (frameArray[i][0] == 'X')
                 {
                     result += 10;
+                    if (int.TryParse(frameArray[i + 1][0].ToString(), out int nextFrameFirstNumber))
+                    {
+                        result += nextFrameFirstNumber;
+                    }
+                    if (int.TryParse(frameArray[i + 1][1].ToString(), out int nextFrameSecondNumber))
+                    {
+                        result += nextFrameSecondNumber;
+                    }
                     continue;
                 }
                 if (frameArray[i][1] == '/')
