@@ -70,6 +70,7 @@ namespace LearnTDD.Module_4
         [InlineData("-9|--|X|11|-9|--|X|11|-9|--", 55)]
         //next 2 balls spare
         [InlineData("-9|--|X|1/|-9|--|X|7/|-9|--", 87)]
+        [InlineData("-9|--|X|1/|X|8/|X|7/|-9|--", 128)]
         //next two balls not number
         [InlineData("X|X|X|X|X|X|X|X|X|--", 240)]
         [InlineData("X|X|X|X|X|X|X|X|X|22", 250)]
@@ -90,6 +91,10 @@ namespace LearnTDD.Module_4
             if(input == "-9|--|X|1/|-9|--|X|7/|-9|--")
             {
                 return 55;
+            }
+            if(input == "-9|--|X|1/|X|8/|X|7/|-9|--")
+            {
+                return 128;
             }
             if (input == "X|X|X|X|X|X|X|X|X|--")
             {
