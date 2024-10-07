@@ -17,6 +17,8 @@ namespace LearnTDD.Module_4
         [InlineData("--|--|--|--|--|--|--|--|--|pp")]
         [InlineData("--|--|--|[]]|--|--|--|--|--|11")]
         [InlineData("--|--|--|1|--|--|--|--|--|11")]
+        //spare at 1 position
+        [InlineData("--|--|--|1|/-|--|--|--|--|11")]
         public void Throw_Error_For_Invalid_Input(string input)
         {
             Action act = () => _bowlingGameShould.Play(input);
@@ -120,7 +122,7 @@ namespace LearnTDD.Module_4
                 {
                     throw new ArgumentException("Invalid Input");
                 }
-                else if (frameArray[i][0] != '-' && frameArray[i][0] != '/' && frameArray[i][0] != 'X' && !int.TryParse(frameArray[i][0].ToString(), out int _))
+                else if (frameArray[i][0] != '-' && frameArray[i][0] != 'X' && !int.TryParse(frameArray[i][0].ToString(), out int _))
                 {
                     throw new ArgumentException("Invalid Input");
                 }
