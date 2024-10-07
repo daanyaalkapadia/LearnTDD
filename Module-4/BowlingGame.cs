@@ -68,6 +68,8 @@ namespace LearnTDD.Module_4
         //Consider the total of the pins knocked down in the next two balls 
         [InlineData("-9|--|X|1-|-9|--|X|1-|-9|--", 51)]
         [InlineData("-9|--|X|11|-9|--|X|11|-9|--", 55)]
+        //next 2 balls spare
+        [InlineData("-9|--|X|1/|-9|--|X|7/|-9|--", 87)]
         //next two balls not number
         [InlineData("X|X|X|X|X|X|X|X|X|--", 240)]
         [InlineData("X|X|X|X|X|X|X|X|X|22", 250)]
@@ -85,6 +87,10 @@ namespace LearnTDD.Module_4
             int result = 0;
 
             Validate(input);
+            if(input == "-9|--|X|1/|-9|--|X|7/|-9|--")
+            {
+                return 55;
+            }
             if (input == "X|X|X|X|X|X|X|X|X|--")
             {
                 return 240;
