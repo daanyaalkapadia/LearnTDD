@@ -60,15 +60,6 @@ namespace LearnTDD.Module_4
 
             Validate(input);
 
-            if (input == "-/|-/|-/|-/|4-|-/|-/|-/|-/|--")
-            {
-                return 88;
-            }
-            if(input == "34|61|81|44|14|32|3/|12|32|53")
-            {
-                return 68;
-            }
-
             string[] frameArray = input.Split('|');
             for (int i = 0; i < 10; i++)
             {
