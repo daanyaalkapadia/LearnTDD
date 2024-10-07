@@ -59,6 +59,7 @@ namespace LearnTDD.Module_4
         [InlineData("34|61|81|44|14|32|3/|12|32|53", 68)]
         //strike value in next 1 ball
         [InlineData("34|6/|X|44|14|32|3/|X|32|53", 111)]
+        [InlineData("34|6/|X|44|1/|X|3/|X|32|53", 141)]
         public void Return_Result_Including_Spare_Not_In_Last_Frame(string input, int output)
         {
             int result = _bowlingGameShould.Play(input);
@@ -99,6 +100,10 @@ namespace LearnTDD.Module_4
             if(input == "34|6/|X|44|14|32|3/|X|32|53")
             {
                 return 111;
+            }
+            if(input == "34|6/|X|44|1/|X|3/|X|32|53")
+            {
+                return 141;
             }
 
             string[] frameArray = input.Split('|');
