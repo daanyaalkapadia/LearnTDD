@@ -23,6 +23,7 @@ namespace LearnTDD.Module_4
         [InlineData("/-|--|--|--|/-|--|--|/-|--|/1")]
         //strike at 2nd position
         [InlineData("--|--|--|--|--|--|--|--|-X|--")]
+        [InlineData("-X|--|--|-X|--|--|--|--|-X|--")]
         public void Throw_Error_For_Invalid_Input(string input)
         {
             Action act = () => _bowlingGameShould.Play(input);
