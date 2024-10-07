@@ -80,15 +80,6 @@ namespace LearnTDD.Module_4
 
             Validate(input);
 
-            if (input == "X|--|--|--|--|--|--|--|--|--")
-            {
-                return 10;
-            }
-            if (input == "X|--|X|--|X|--|X|--|X|--")
-            {
-                return 50;
-            }
-
             string[] frameArray = input.Split('|');
             for (int i = 0; i < 10; i++)
             {
