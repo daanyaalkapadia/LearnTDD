@@ -98,11 +98,6 @@ namespace LearnTDD.Module_4
 
             Validate(input);
 
-            if (input == "34|6/|X|44|1/|X|3/|X|32|53")
-            {
-                return 141;
-            }
-
             string[] frameArray = input.Split('|');
             for (int i = 0; i < 10; i++)
             {
