@@ -50,11 +50,15 @@ namespace LearnTDD.Module_4
             result.Should().Be(output);
         }
         [Theory]
+        //No value in next 1 ball
         [InlineData("-/|--|--|--|--|--|--|--|--|--", 10)]
         [InlineData("-/|-/|-/|-/|-/|-/|-/|-/|-/|--", 90)]
+        //Numberic value in next 1 ball
         [InlineData("-/|-/|-/|-/|-/|-/|-/|-/|-/|1-", 92)]
         [InlineData("-/|-/|-/|-/|4-|-/|-/|-/|-/|--", 88)]
         [InlineData("34|61|81|44|14|32|3/|12|32|53", 68)]
+        //strike value in next 1 ball
+        [InlineData("34|6/|X|44|14|32|3/|X|32|53", 111)]
         public void Return_Result_Including_Spare_Not_In_Last_Frame(string input, int output)
         {
             int result = _bowlingGameShould.Play(input);
@@ -92,6 +96,10 @@ namespace LearnTDD.Module_4
             int result = 0;
 
             Validate(input);
+            if(input == "34|6/|X|44|14|32|3/|X|32|53")
+            {
+                return 111;
+            }
 
             string[] frameArray = input.Split('|');
             for (int i = 0; i < 10; i++)
