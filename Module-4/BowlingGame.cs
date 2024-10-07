@@ -172,10 +172,7 @@ namespace LearnTDD.Module_4
         private void Validate(string input)
         {
             string[] frameArray = input.Split('|');
-            if (input == "--|--|--|--|88|--|--|96|--|--" || input == "--|55|--|--|88|--|--|96|--|--" || input == "--|--|66|--|88|--|--|96|--|--")
-            {
-                throw new ArgumentException("Invalid Input");
-            }
+
             for (int i = 0; i < 10; i++)
             {
                 if (frameArray[i].Length != 2 && !(frameArray[i].Length == 1 && frameArray[i][0] == 'X'))
