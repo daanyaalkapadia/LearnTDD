@@ -26,6 +26,10 @@ namespace LearnTDD.Module_4
         [InlineData("-1|--|-1|--|-1|--|-1|--|-1|--", 5)]
         [InlineData("2-|2-|2-|2-|2-|2-|2-|2-|2-|2-", 20)]
         [InlineData("-9|-9|-9|-9|-9|-9|-9|-9|-9|-9", 90)]
+        [InlineData("11|11|11|11|11|11|11|11|11|11", 20)]
+        [InlineData("21|21|21|21|21|21|21|21|21|21", 30)]
+        [InlineData("23|23|23|23|23|23|23|23|23|23", 50)]
+        [InlineData("44|44|44|44|44|44|44|44|44|44", 80)]
         public void Return_Result(string input, int output)
         {
             int result = _bowlingGameShould.Play(input);
