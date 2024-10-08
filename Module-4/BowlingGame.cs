@@ -118,14 +118,6 @@ namespace LearnTDD.Module_4
         {
             int result = 0;
             Validate(input);
-            if (input == "X|X|X|X|X|X|X|X|X|X||XX")
-            {
-                return 300;
-            }
-            if (input == "X|7/|9-|X|-8|8/|-6|X|X|X||81")
-            {
-                return 167;
-            }
 
             input = input.Replace("||", "|");
             string[] frameArray = input.Split('|');
@@ -134,7 +126,33 @@ namespace LearnTDD.Module_4
                 if (frameArray[i][0] == 'X')
                 {
                     result += 10;
-                    if (frameArray[i + 1].Length > 1 && frameArray[i + 1][1] == '/')
+                    if (i + 1 == 10 && frameArray[i + 1].Contains("X"))
+                    {
+                        if(frameArray[i + 1][0] == 'X')
+                        {
+                            result += 10;
+                        }
+                        else if (frameArray[i + 1][1] == '/')
+                        {
+                            result += 10;
+                            continue;
+                        }
+                        else if(int.TryParse(frameArray[i + 1][0].ToString(), out int lastFrameFirstNumber))
+                        {
+                            result += lastFrameFirstNumber;
+                        }
+
+                        if (frameArray[i + 1][1] == 'X')
+                        {
+                            result += 10;
+                        }
+                        else if (int.TryParse(frameArray[i + 1][1].ToString(), out int lastFrameSecondNumber))
+                        {
+                            result += lastFrameSecondNumber;
+                        }
+                        continue;
+                    }
+                    else if (frameArray[i + 1].Length > 1 && frameArray[i + 1][1] == '/')
                     {
                         result += 10;
                         continue;
@@ -142,7 +160,7 @@ namespace LearnTDD.Module_4
                     else if (frameArray[i + 1].Length == 1 && frameArray[i + 1][0] == 'X')
                     {
                         result += 10;
-                        if (frameArray[i + 2].Length == 1 && frameArray[i + 2][0] == 'X')
+                        if ((frameArray[i + 2].Length == 1 || i + 2 == 10) && frameArray[i + 2][0] == 'X')
                         {
                             result += 10;
                         }
@@ -176,6 +194,7 @@ namespace LearnTDD.Module_4
                     }
                     continue;
                 }
+
                 if (int.TryParse(frameArray[i][0].ToString(), out int firstNumber))
                 {
                     result += firstNumber;
