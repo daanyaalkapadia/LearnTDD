@@ -156,12 +156,10 @@ namespace LearnTDD.Module_4
                         {
                             result += lastFrameSecondNumber;
                         }
-                        continue;
                     }
                     else if (frameArray[i + 1].Length > 1 && frameArray[i + 1][1] == '/')
                     {
                         result += 10;
-                        continue;
                     }
                     else if (frameArray[i + 1].Length == 1 && frameArray[i + 1][0] == 'X')
                     {
@@ -176,7 +174,7 @@ namespace LearnTDD.Module_4
                     {
                         result += GetNumericScore(frameArray[i + 1][0].ToString());
                         result += GetNumericScore(frameArray[i + 1][1].ToString());
-                    }                    
+                    }
                 }
                 else if (frameArray[i][1] == '/')
                 {
