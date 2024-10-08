@@ -176,8 +176,8 @@ namespace LearnTDD.Module_4
             }
             else
             {
-                bonus += GetNumericScore(frameArray[currentIndex + 1][0]);
-                bonus += GetNumericScore(frameArray[currentIndex + 1][1]);
+                bonus += GetScore(frameArray[currentIndex + 1][0]);
+                bonus += GetScore(frameArray[currentIndex + 1][1]);
             }
 
             return bonus;
