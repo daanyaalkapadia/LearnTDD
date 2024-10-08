@@ -177,14 +177,8 @@ namespace LearnTDD.Module_4
                         continue;
                     }
 
-                    if (int.TryParse(frameArray[i + 1][0].ToString(), out int nextFrameFirstNumber))
-                    {
-                        result += nextFrameFirstNumber;
-                    }
-                    if (int.TryParse(frameArray[i + 1][1].ToString(), out int nextFrameSecondNumber))
-                    {
-                        result += nextFrameSecondNumber;
-                    }
+                    result += GetNumericScore(frameArray[i + 1][0].ToString());
+                    result += GetNumericScore(frameArray[i + 1][1].ToString());
                     continue;
                 }
                 if (frameArray[i][1] == '/')
@@ -202,10 +196,7 @@ namespace LearnTDD.Module_4
                 }
 
                 result += GetNumericScore(frameArray[i][0].ToString());
-                if (int.TryParse(frameArray[i][1].ToString(), out int secondNumber))
-                {
-                    result += secondNumber;
-                }
+                result += GetNumericScore(frameArray[i][1].ToString());
             }
             return result;
         }
