@@ -38,6 +38,7 @@ namespace LearnTDD.Module_4
         [InlineData("X|X|X|X|X|X|X|X|X|X||XX||")]
         [InlineData("X|X|X|X|X|X|X|X|X|X||XXX")]
         [InlineData("X|X|X|X|X|X|X|X|X|X||X")]
+        [InlineData("X|X|X|X|X|X|X|X|X|X||")]
         [InlineData("X|X|X|X|X|X|X|X|X|4/||")]
         public void Throw_Error_For_Invalid_Input(string input)
         {
@@ -285,7 +286,7 @@ namespace LearnTDD.Module_4
             {
                 isError = true;
             }
-            else if ((frameArray.Last().Last() == '/') && input.Length < 1)
+            else if ((frameArray.Last().Last() == '/' || (frameArray[frameArray.Length - 2].Last() == 'X' && frameArray.Last().Last() == '/')) && input.Length < 1)
             {
                 isError = true;
             }
