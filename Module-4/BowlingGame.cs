@@ -103,6 +103,8 @@ namespace LearnTDD.Module_4
 
         [Theory]
         [InlineData("X|X|X|X|X|X|X|X|X|X||XX", 300)]
+        [InlineData("X|X|X|X|X|X|X|X|X|X||X3", 293)]
+        [InlineData("X|X|X|X|X|X|X|X|X|X||7/", 287)]
         [InlineData("X|7/|9-|X|-8|8/|-6|X|X|X||81", 167)]
         [InlineData("5/|5/|5/|5/|5/|5/|5/|5/|5/|5/||5", 150)]
         public void Return_Result_Including_Strike_Spare_In_Last_Frame(string input, int output)
