@@ -158,36 +158,15 @@ namespace LearnTDD.Module_4
         {
             int bonus = 0;
             int extraBallFrameIndex = 10;
-            if (currentIndex + 1 == extraBallFrameIndex && frameArray[currentIndex + 1].Contains('X'))
+            if (currentIndex + 1 == extraBallFrameIndex && frameArray[currentIndex + 1][0] == 'X')
             {
-                if (frameArray[currentIndex + 1][0] == 'X')
-                {
-                    bonus += 10;
-                }
-                else if (frameArray[currentIndex + 1][1] == '/')
-                {
-                    bonus += 10;
-                    return bonus;
-                }
-                else
-                {
-                    bonus += GetNumericScore(frameArray[currentIndex + 1][0].ToString());
-                }
-
-                if (frameArray[currentIndex + 1][1] == 'X')
-                {
-                    bonus += 10;
-                }
-                else
-                {
-                    bonus += GetNumericScore(frameArray[currentIndex + 1][1].ToString());
-                }
+                bonus += GetBonusFromExtraBallsLastFrame(frameArray, currentIndex);
             }
             else if (frameArray[currentIndex + 1].Length > 1 && frameArray[currentIndex + 1][1] == '/')
             {
                 bonus += 10;
             }
-            else if ( frameArray[currentIndex + 1][0] == 'X')
+            else if (frameArray[currentIndex + 1][0] == 'X')
             {
                 bonus += 10;
                 if (frameArray[currentIndex + 2][0] == 'X')
@@ -202,6 +181,34 @@ namespace LearnTDD.Module_4
                 bonus += GetNumericScore(frameArray[currentIndex + 1][1].ToString());
             }
 
+            return bonus;
+        }
+        //Handling extra ball cases like X1, X5, X9
+        private int GetBonusFromExtraBallsLastFrame(string[] frameArray, int currentIndex)
+        {
+            int bonus = 0;
+            if (frameArray[currentIndex + 1][0] == 'X')
+            {
+                bonus += 10;
+            }
+            else if (frameArray[currentIndex + 1][1] == '/')
+            {
+                bonus += 10;
+                return bonus;
+            }
+            else
+            {
+                bonus += GetNumericScore(frameArray[currentIndex + 1][0].ToString());
+            }
+
+            if (frameArray[currentIndex + 1][1] == 'X')
+            {
+                bonus += 10;
+            }
+            else
+            {
+                bonus += GetNumericScore(frameArray[currentIndex + 1][1].ToString());
+            }
             return bonus;
         }
 
