@@ -101,6 +101,7 @@ namespace LearnTDD.Module_4
             result.Should().Be(output);
         }
 
+        [Theory]
         [InlineData("X|X|X|X|X|X|X|X|X|X||XX", 300)]
         [InlineData("X|7/|9-|X|-8|8/|-6|X|X|X||81", 167)]
         [InlineData("5/|5/|5/|5/|5/|5/|5/|5/|5/|5/||5", 150)]
@@ -121,7 +122,7 @@ namespace LearnTDD.Module_4
             {
                 return 300;
             }
-            if(input == "X|7/|9-|X|-8|8/|-6|X|X|X||81")
+            if (input == "X|7/|9-|X|-8|8/|-6|X|X|X||81")
             {
                 return 167;
             }
@@ -191,13 +192,13 @@ namespace LearnTDD.Module_4
         }
         private void Validate(string input)
         {
-            int noOfFrames = 10;
+            int noOfFrames = 9;
             string[] framesWithExtraFrame = input.Split("||");
-            if(framesWithExtraFrame.Length > 2)
+            if (framesWithExtraFrame.Length > 2)
             {
                 throw new ArgumentException("Invalid Input");
             }
-            else if(framesWithExtraFrame.Length == 2)
+            else if (framesWithExtraFrame.Length == 2)
             {
                 input = input.Replace("||", "|");
                 noOfFrames++;
@@ -206,7 +207,7 @@ namespace LearnTDD.Module_4
             string[] frameArray = input.Split('|');
             for (int i = 0; i < noOfFrames; i++)
             {
-                if (frameArray[i].Length != 2 && !(frameArray[i].Length == 1 && frameArray[i][0] == 'X'))
+                if (frameArray[i].Length != 2 && !(frameArray[i].Length == 1 && frameArray[i][0] == 'X') && !(frameArray[i].Length == 1 && i == 10))
                 {
                     throw new ArgumentException("Invalid Input");
                 }
