@@ -243,11 +243,10 @@ namespace LearnTDD.Module_4
             {
                 isError = true;
             }
-            else if (frameArray[i].Length > 1 && frameArray[i][1] != '-' && frameArray[i][1] != '/' && !int.TryParse(frameArray[i][1].ToString(), out int _))
+            else if (frameArray[i].Length > 1 && !allowCharAtSecondPosition.Any(x=> x == frameArray[i][1]) && !int.TryParse(frameArray[i][1].ToString(), out int _))
             {
                 isError = true;
             }
-            //common
             else if (frameArray[i].Length == 2 && int.TryParse(frameArray[i][0].ToString(), out int firstNumber) && int.TryParse(frameArray[i][1].ToString(), out int secondNumber))
             {
                 if (firstNumber + secondNumber > 9)
