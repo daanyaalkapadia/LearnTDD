@@ -37,6 +37,7 @@ namespace LearnTDD.Module_4
         [InlineData("X|X|X|X|X|X|X|X|X|X||/X")]
         [InlineData("X|X|X|X|X|X|X|X|X|X||XX||")]
         [InlineData("X|X|X|X|X|X|X|X|X|X||XXX")]
+        [InlineData("X|X|X|X|X|X|X|X|X|X||X")]
         public void Throw_Error_For_Invalid_Input(string input)
         {
             Action act = () => _bowlingGameShould.Play(input);
@@ -271,6 +272,10 @@ namespace LearnTDD.Module_4
             }
 
             if (framesWithExtraFrame[1].Length > 2)
+            {
+                isError = true;
+            }
+            else if (framesWithExtraFrame[0].Last() == 'X' && framesWithExtraFrame[1].Length != 2)
             {
                 isError = true;
             }
