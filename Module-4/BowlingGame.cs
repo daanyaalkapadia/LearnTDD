@@ -187,10 +187,10 @@ namespace LearnTDD.Module_4
             {
                 bonus += 10;
             }
-            else if (frameArray[currentIndex + 1].Length == 1 && frameArray[currentIndex + 1][0] == 'X')
+            else if ( frameArray[currentIndex + 1][0] == 'X')
             {
                 bonus += 10;
-                if ((frameArray[currentIndex + 2].Length == 1 || currentIndex + 2 == extraBallFrameIndex) && frameArray[currentIndex + 2][0] == 'X')
+                if (frameArray[currentIndex + 2][0] == 'X')
                 {
                     bonus += 10;
                 }
