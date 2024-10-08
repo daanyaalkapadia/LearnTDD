@@ -126,11 +126,8 @@ namespace LearnTDD.Module_4
             {
                 return 167;
             }
-            if (input == "5/|5/|5/|5/|5/|5/|5/|5/|5/|5/||5")
-            {
-                return 150;
-            }
 
+            input = input.Replace("||", "|");
             string[] frameArray = input.Split('|');
             for (int i = 0; i < 10; i++)
             {
@@ -192,7 +189,7 @@ namespace LearnTDD.Module_4
         }
         private void Validate(string input)
         {
-            int noOfFrames = 9;
+            int noOfFrames = 10;
             string[] framesWithExtraFrame = input.Split("||");
             if (framesWithExtraFrame.Length > 2)
             {
@@ -207,11 +204,11 @@ namespace LearnTDD.Module_4
             string[] frameArray = input.Split('|');
             for (int i = 0; i < noOfFrames; i++)
             {
-                if (frameArray[i].Length != 2 && !(frameArray[i].Length == 1 && frameArray[i][0] == 'X') && !(frameArray[i].Length == 1 && i == 10))
+                if (frameArray[i].Length != 2 && !(frameArray[i].Length == 1 && frameArray[i][0] == 'X' && i != 10) && !(frameArray[i].Length == 1 && i == 10))
                 {
                     throw new ArgumentException("Invalid Input");
                 }
-                else if (frameArray[i].Length == 2 && frameArray[i][0] == 'X')
+                else if (frameArray[i].Length == 2 && frameArray[i][0] == 'X' && i != 10)
                 {
                     throw new ArgumentException("Invalid Input");
                 }
@@ -219,7 +216,7 @@ namespace LearnTDD.Module_4
                 {
                     throw new ArgumentException("Invalid Input");
                 }
-                else if (frameArray[i].Length > 1 && frameArray[i][1] != '-' && frameArray[i][1] != '/' && !int.TryParse(frameArray[i][1].ToString(), out int _))
+                else if (frameArray[i].Length > 1 && frameArray[i][1] != '-' && frameArray[i][1] != '/' && !int.TryParse(frameArray[i][1].ToString(), out int _) && i != 10)
                 {
                     throw new ArgumentException("Invalid Input");
                 }
