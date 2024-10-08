@@ -226,6 +226,20 @@ namespace LearnTDD.Module_4
             }
 
             string[] frameArray = input.Split('|');
+            isError = ValidatingFrame(noOfFrames, isError, frameArray);
+            if (!isError && framesWithExtraFrame.Length == 2)
+            {
+                ValidateForExtraBall(extraBall, frameArray, ref isError);
+            }
+
+            if (isError)
+            {
+                throw new ArgumentException("Invalid Input");
+            }
+        }
+
+        private bool ValidatingFrame(int noOfFrames, bool isError, string[] frameArray)
+        {
             for (int i = 0; i < noOfFrames && !isError; i++)
             {
                 if (frameArray[i].Length != 2 && !(frameArray[i].Length == 1 && frameArray[i][0] == 'X'))
@@ -241,15 +255,8 @@ namespace LearnTDD.Module_4
                     isError = CommonValidation(frameArray, i, ['-', 'X'], ['-', '/']);
                 }
             }
-            if (framesWithExtraFrame.Length == 2)
-            {
-                ValidateForExtraBall(extraBall, frameArray, ref isError);
-            }
 
-            if (isError)
-            {
-                throw new ArgumentException("Invalid Input");
-            }
+            return isError;
         }
 
         private bool CommonValidation(string[] frameArray, int i, char[] allowCharAtFirstPosition, char[] allowCharAtSecondPosition)
