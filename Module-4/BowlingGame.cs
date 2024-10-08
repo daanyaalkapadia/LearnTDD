@@ -188,14 +188,8 @@ namespace LearnTDD.Module_4
                 bonus += GetScore(frameArray[currentIndex + 1][0]);
             }
 
-            if (frameArray[currentIndex + 1][1] == 'X')
-            {
-                bonus += GetScore(frameArray[currentIndex + 1][1]);
-            }
-            else
-            {
-                bonus += GetScore(frameArray[currentIndex + 1][1]);
-            }
+            bonus += GetScore(frameArray[currentIndex + 1][1]);
+
             return bonus;
         }
 
