@@ -147,8 +147,8 @@ namespace LearnTDD.Module_4
                 }
                 else
                 {
-                    result += GetNumericScore(frameArray[i][0].ToString());
-                    result += GetNumericScore(frameArray[i][1].ToString());
+                    result += GetNumericScore(frameArray[i][0]);
+                    result += GetNumericScore(frameArray[i][1]);
                 }
             }
             return result;
@@ -173,12 +173,12 @@ namespace LearnTDD.Module_4
                 {
                     bonus += 10;
                 }
-                bonus += GetNumericScore(frameArray[currentIndex + 2][0].ToString());
+                bonus += GetNumericScore(frameArray[currentIndex + 2][0]);
             }
             else
             {
-                bonus += GetNumericScore(frameArray[currentIndex + 1][0].ToString());
-                bonus += GetNumericScore(frameArray[currentIndex + 1][1].ToString());
+                bonus += GetNumericScore(frameArray[currentIndex + 1][0]);
+                bonus += GetNumericScore(frameArray[currentIndex + 1][1]);
             }
 
             return bonus;
@@ -198,7 +198,7 @@ namespace LearnTDD.Module_4
             }
             else
             {
-                bonus += GetNumericScore(frameArray[currentIndex + 1][1].ToString());
+                bonus += GetNumericScore(frameArray[currentIndex + 1][1]);
             }
             return bonus;
         }
@@ -212,15 +212,29 @@ namespace LearnTDD.Module_4
             }
             else
             {
-                bonusScore += GetNumericScore(frameArray[currentIndex + 1][0].ToString());
+                bonusScore += GetNumericScore(frameArray[currentIndex + 1][0]);
             }
 
             return bonusScore;
         }
-
-        private int GetNumericScore(string input)
+        private int GetScore(char input)
         {
-            if (int.TryParse(input, out int number))
+            switch (input)
+            {
+                case 'X':
+                    return 10;
+                case '/':
+                    return 10;
+                case '-':
+                    return 0;
+                default:
+                    return GetNumericScore(input);
+            }
+        }
+
+        private int GetNumericScore(char input)
+        {
+            if (int.TryParse(input.ToString(), out int number))
             {
                 return number;
             }
