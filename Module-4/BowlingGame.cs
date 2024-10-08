@@ -143,18 +143,18 @@ namespace LearnTDD.Module_4
                             result += 10;
                             continue;
                         }
-                        else if (int.TryParse(frameArray[i + 1][0].ToString(), out int lastFrameFirstNumber))
+                        else
                         {
-                            result += lastFrameFirstNumber;
+                            result += GetNumericScore(frameArray[i + 1][0].ToString());
                         }
 
                         if (frameArray[i + 1][1] == 'X')
                         {
                             result += 10;
                         }
-                        else if (int.TryParse(frameArray[i + 1][1].ToString(), out int lastFrameSecondNumber))
+                        else
                         {
-                            result += lastFrameSecondNumber;
+                            result += GetNumericScore(frameArray[i + 1][1].ToString());
                         }
                     }
                     else if (frameArray[i + 1].Length > 1 && frameArray[i + 1][1] == '/')
