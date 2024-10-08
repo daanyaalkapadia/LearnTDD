@@ -160,11 +160,12 @@ namespace LearnTDD.Module_4
             int extraBallFrameIndex = 10;
             if (currentIndex + 1 == extraBallFrameIndex && frameArray[currentIndex + 1][0] == 'X')
             {
-                bonus += GetBonusFromExtraBallsLastFrame(frameArray, currentIndex);
+                //Handling extra ball cases like X1, X5, X9, XX
+                bonus += GetScore(frameArray[currentIndex + 1][1]);
             }
             else if (frameArray[currentIndex + 1].Length > 1 && frameArray[currentIndex + 1][1] == '/')
             {
-                bonus += (GetScore(frameArray[currentIndex + 1][1]) - GetScore(frameArray[currentIndex + 1][0]));
+                bonus += GetScore(frameArray[currentIndex + 1][1]) - GetScore(frameArray[currentIndex + 1][0]);
             }
             else if (frameArray[currentIndex + 1][0] == 'X')
             {
@@ -175,13 +176,6 @@ namespace LearnTDD.Module_4
                 bonus += GetScore(frameArray[currentIndex + 1][1]);
             }
 
-            return bonus;
-        }
-        //Handling extra ball cases like X1, X5, X9, XX
-        private int GetBonusFromExtraBallsLastFrame(string[] frameArray, int currentIndex)
-        {
-            int bonus = 0;
-            bonus += GetScore(frameArray[currentIndex + 1][1]);
             return bonus;
         }
 
