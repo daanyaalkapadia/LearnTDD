@@ -253,7 +253,7 @@ namespace LearnTDD.Module_4
             {
                 isError = true;
             }
-            if(framesWithExtraFrame.Length == 1)
+            if (framesWithExtraFrame.Length == 1)
             {
                 return;
             }
@@ -263,6 +263,10 @@ namespace LearnTDD.Module_4
                 isError = true;
             }
             else if (framesWithExtraFrame[1][0] != '-' && framesWithExtraFrame[1][0] != 'X' && !int.TryParse(framesWithExtraFrame[1][0].ToString(), out int _))
+            {
+                isError = true;
+            }
+            else if (framesWithExtraFrame[1].Length > 1 && framesWithExtraFrame[1][1] != '-' && framesWithExtraFrame[1][1] != '/' && framesWithExtraFrame[1][1] != 'X' && !int.TryParse(framesWithExtraFrame[1][1].ToString(), out int _))
             {
                 isError = true;
             }
