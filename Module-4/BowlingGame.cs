@@ -115,6 +115,7 @@ namespace LearnTDD.Module_4
         [InlineData("X|X|X|X|X|X|X|X|X|X||7/", 287)]
         [InlineData("X|7/|9-|X|-8|8/|-6|X|X|X||81", 167)]
         [InlineData("5/|5/|5/|5/|5/|5/|5/|5/|5/|5/||5", 150)]
+        [InlineData("53|15|62|35|62|X|54|X|53|5/||4", 106)]
         public void Return_Result_Including_Strike_Spare_In_Last_Frame(string input, int output)
         {
             int result = _bowlingGameShould.Play(input);
@@ -137,7 +138,7 @@ namespace LearnTDD.Module_4
                 if (frameArray[i][0] == 'X')
                 {
                     result += GetScore(frameArray[i][0]);
-                    result += GetScore(frameArray[i + 1][0]) + GetBonusForStrike(frameArray, i);
+                    result += GetScore(frameArray[i + 1][0]) + GetSecondBonusForStrike(frameArray, i);
                 }
                 else if (frameArray[i][1] == '/')
                 {
@@ -154,7 +155,7 @@ namespace LearnTDD.Module_4
             return result;
         }
 
-        private int GetBonusForStrike(string[] frameArray, int currentIndex)
+        private int GetSecondBonusForStrike(string[] frameArray, int currentIndex)
         {
             int bonus = 0;
             int extraBallFrameIndex = 10;
@@ -163,13 +164,13 @@ namespace LearnTDD.Module_4
                 //Handling extra ball cases like X1, X5, X9, XX
                 bonus += GetScore(frameArray[currentIndex + 1][1]);
             }
-            else if (frameArray[currentIndex + 1].Length > 1 && frameArray[currentIndex + 1][1] == '/')
-            {
-                bonus += GetScore(frameArray[currentIndex + 1][1]) - GetScore(frameArray[currentIndex + 1][0]);
-            }
             else if (frameArray[currentIndex + 1][0] == 'X')
             {
                 bonus += GetScore(frameArray[currentIndex + 2][0]);
+            }
+            else if (frameArray[currentIndex + 1][1] == '/')
+            {
+                bonus += GetScore(frameArray[currentIndex + 1][1]) - GetScore(frameArray[currentIndex + 1][0]);
             }
             else
             {
@@ -209,6 +210,7 @@ namespace LearnTDD.Module_4
             bool isError = false;
             string extraBall = string.Empty;
             string[] framesWithExtraFrame = input.Split("||");
+
             if (framesWithExtraFrame.Length > 2)
             {
                 isError = true;
@@ -220,11 +222,13 @@ namespace LearnTDD.Module_4
             }
 
             string[] frameArray = input.Split('|');
-            isError = ValidatingFrame(noOfFrames, isError, frameArray);
-
+            if (!isError)
+            {
+                isError = ValidatingFrame(noOfFrames, frameArray);
+            }
             if (!isError && framesWithExtraFrame.Length == 2)
             {
-                ValidateForExtraBall(extraBall, frameArray, ref isError);
+                isError = ValidateForExtraBall(extraBall, frameArray);
             }
 
             if (isError)
@@ -233,8 +237,9 @@ namespace LearnTDD.Module_4
             }
         }
 
-        private bool ValidatingFrame(int noOfFrames, bool isError, string[] frameArray)
+        private bool ValidatingFrame(int noOfFrames, string[] frameArray)
         {
+            bool isError = false;
             for (int i = 0; i < noOfFrames && !isError; i++)
             {
                 if (frameArray[i].Length != 2 && !(frameArray[i].Length == 1 && frameArray[i][0] == 'X'))
@@ -254,8 +259,9 @@ namespace LearnTDD.Module_4
             return isError;
         }
 
-        private void ValidateForExtraBall(string input, string[] frameArray, ref bool isError)
+        private bool ValidateForExtraBall(string input, string[] frameArray)
         {
+            bool isError = false;
             if (input.Length > 2)
             {
                 isError = true;
@@ -276,6 +282,7 @@ namespace LearnTDD.Module_4
             {
                 isError = CommonValidation([input], 0, ['-', 'X'], ['-', '/', 'X']);
             }
+            return isError;
         }
 
         private bool CommonValidation(string[] frameArray, int i, char[] allowCharAtFirstPosition, char[] allowCharAtSecondPosition)
@@ -287,7 +294,7 @@ namespace LearnTDD.Module_4
             {
                 isError = true;
             }
-            else if (frameArray[i].Length > 1 && !allowCharAtSecondPosition.Any(x => x == frameArray[i][1]) && !int.TryParse(frameArray[i][1].ToString(), out int _))
+            else if (frameArray[i].Length == 2 && !allowCharAtSecondPosition.Any(x => x == frameArray[i][1]) && !int.TryParse(frameArray[i][1].ToString(), out int _))
             {
                 isError = true;
             }
