@@ -142,7 +142,6 @@ namespace LearnTDD.Module_4
                 else if (frameArray[i][1] == '/')
                 {
                     result += GetScore(frameArray[i][1]);
-                    //bonues next ball
                     result += GetBonusScoreForSpare(frameArray, i);
                 }
                 else
@@ -164,14 +163,14 @@ namespace LearnTDD.Module_4
             }
             else if (frameArray[currentIndex + 1].Length > 1 && frameArray[currentIndex + 1][1] == '/')
             {
-                bonus += 10;
+                bonus += GetScore(frameArray[currentIndex + 1][1]);
             }
             else if (frameArray[currentIndex + 1][0] == 'X')
             {
-                bonus += 10;
+                bonus += GetScore(frameArray[currentIndex + 1][0]);
                 if (frameArray[currentIndex + 2][0] == 'X')
                 {
-                    bonus += 10;
+                    bonus += GetScore(frameArray[currentIndex + 2][0]);
                 }
                 bonus += GetNumericScore(frameArray[currentIndex + 2][0]);
             }
