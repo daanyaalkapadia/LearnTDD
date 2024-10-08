@@ -136,49 +136,7 @@ namespace LearnTDD.Module_4
                 if (frameArray[i][0] == 'X')
                 {
                     result += 10;
-                    if (i + 1 == 10 && frameArray[i + 1].Contains("X"))
-                    {
-                        if (frameArray[i + 1][0] == 'X')
-                        {
-                            result += 10;
-                        }
-                        else if (frameArray[i + 1][1] == '/')
-                        {
-                            result += 10;
-                            continue;
-                        }
-                        else
-                        {
-                            result += GetNumericScore(frameArray[i + 1][0].ToString());
-                        }
-
-                        if (frameArray[i + 1][1] == 'X')
-                        {
-                            result += 10;
-                        }
-                        else
-                        {
-                            result += GetNumericScore(frameArray[i + 1][1].ToString());
-                        }
-                    }
-                    else if (frameArray[i + 1].Length > 1 && frameArray[i + 1][1] == '/')
-                    {
-                        result += 10;
-                    }
-                    else if (frameArray[i + 1].Length == 1 && frameArray[i + 1][0] == 'X')
-                    {
-                        result += 10;
-                        if ((frameArray[i + 2].Length == 1 || i + 2 == 10) && frameArray[i + 2][0] == 'X')
-                        {
-                            result += 10;
-                        }
-                        result += GetNumericScore(frameArray[i + 2][0].ToString());
-                    }
-                    else
-                    {
-                        result += GetNumericScore(frameArray[i + 1][0].ToString());
-                        result += GetNumericScore(frameArray[i + 1][1].ToString());
-                    }
+                    result += GetBonusForStrike(frameArray, i);
                 }
                 else if (frameArray[i][1] == '/')
                 {
@@ -194,6 +152,57 @@ namespace LearnTDD.Module_4
             }
             return result;
         }
+
+        private int GetBonusForStrike(string[] frameArray, int currentIndex)
+        {
+            int bonus = 0;
+            if (currentIndex + 1 == 10 && frameArray[currentIndex + 1].Contains("X"))
+            {
+                if (frameArray[currentIndex + 1][0] == 'X')
+                {
+                    bonus += 10;
+                }
+                else if (frameArray[currentIndex + 1][1] == '/')
+                {
+                    bonus += 10;
+                    return bonus;
+                }
+                else
+                {
+                    bonus += GetNumericScore(frameArray[currentIndex + 1][0].ToString());
+                }
+
+                if (frameArray[currentIndex + 1][1] == 'X')
+                {
+                    bonus += 10;
+                }
+                else
+                {
+                    bonus += GetNumericScore(frameArray[currentIndex + 1][1].ToString());
+                }
+            }
+            else if (frameArray[currentIndex + 1].Length > 1 && frameArray[currentIndex + 1][1] == '/')
+            {
+                bonus += 10;
+            }
+            else if (frameArray[currentIndex + 1].Length == 1 && frameArray[currentIndex + 1][0] == 'X')
+            {
+                bonus += 10;
+                if ((frameArray[currentIndex + 2].Length == 1 || currentIndex + 2 == 10) && frameArray[currentIndex + 2][0] == 'X')
+                {
+                    bonus += 10;
+                }
+                bonus += GetNumericScore(frameArray[currentIndex + 2][0].ToString());
+            }
+            else
+            {
+                bonus += GetNumericScore(frameArray[currentIndex + 1][0].ToString());
+                bonus += GetNumericScore(frameArray[currentIndex + 1][1].ToString());
+            }
+
+            return bonus;
+        }
+
         private int GetBonusScoreForSpare(string[] frameArray, int currentIndex)
         {
             int bonusScore = 0;
