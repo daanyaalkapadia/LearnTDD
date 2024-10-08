@@ -179,24 +179,25 @@ namespace LearnTDD.Module_4
 
                     result += GetNumericScore(frameArray[i + 1][0].ToString());
                     result += GetNumericScore(frameArray[i + 1][1].ToString());
-                    continue;
                 }
-                if (frameArray[i][1] == '/')
+                else if (frameArray[i][1] == '/')
                 {
                     result += 10;
-                    if (int.TryParse(frameArray[i + 1][0].ToString(), out int numberOfPinKnockedDownInNextBall))
-                    {
-                        result += numberOfPinKnockedDownInNextBall;
-                    }
-                    else if (frameArray[i + 1][0] == 'X')
+                    //bonues next ball
+                    if (frameArray[i + 1][0] == 'X')
                     {
                         result += 10;
                     }
-                    continue;
+                    else
+                    {
+                        result += GetNumericScore(frameArray[i + 1][0].ToString());
+                    }
                 }
-
-                result += GetNumericScore(frameArray[i][0].ToString());
-                result += GetNumericScore(frameArray[i][1].ToString());
+                else
+                {
+                    result += GetNumericScore(frameArray[i][0].ToString());
+                    result += GetNumericScore(frameArray[i][1].ToString());
+                }
             }
             return result;
         }
