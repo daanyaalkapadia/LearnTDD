@@ -170,15 +170,13 @@ namespace LearnTDD.Module_4
                         {
                             result += 10;
                         }
-                        else if (int.TryParse(frameArray[i + 2][0].ToString(), out int nexttonextFrameFirstNumber))
-                        {
-                            result += nexttonextFrameFirstNumber;
-                        }
-                        continue;
+                        result += GetNumericScore(frameArray[i + 2][0].ToString());
                     }
-
-                    result += GetNumericScore(frameArray[i + 1][0].ToString());
-                    result += GetNumericScore(frameArray[i + 1][1].ToString());
+                    else
+                    {
+                        result += GetNumericScore(frameArray[i + 1][0].ToString());
+                        result += GetNumericScore(frameArray[i + 1][1].ToString());
+                    }                    
                 }
                 else if (frameArray[i][1] == '/')
                 {
