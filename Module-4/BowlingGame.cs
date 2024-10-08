@@ -208,47 +208,57 @@ namespace LearnTDD.Module_4
         private void Validate(string input)
         {
             int noOfFrames = 10;
-            string[] framesWithExtraFrame = input.Split("||");
-            if (framesWithExtraFrame.Length > 2)
-            {
-                throw new ArgumentException("Invalid Input");
-            }
-            else if (framesWithExtraFrame.Length == 2)
-            {
-                input = input.Replace("||", "|");
-                noOfFrames++;
-            }
+            bool isError = false;
+            ValidateForExtraBall(ref input, ref noOfFrames, ref isError);
 
             string[] frameArray = input.Split('|');
-            for (int i = 0; i < noOfFrames; i++)
+            for (int i = 0; i < noOfFrames && !isError; i++)
             {
                 if (i == 10 && frameArray[i].Length == 2 && frameArray[i][1] == 'X' && frameArray[i][0] != 'X')
                 {
-                    throw new ArgumentException("Invalid Input");
+                    isError = true;
                 }
                 else if (frameArray[i].Length != 2 && !(frameArray[i].Length == 1 && frameArray[i][0] == 'X' && i != 10) && !(frameArray[i].Length == 1 && i == 10))
                 {
-                    throw new ArgumentException("Invalid Input");
+                    isError = true;
                 }
                 else if (frameArray[i].Length == 2 && frameArray[i][0] == 'X' && i != 10)
                 {
-                    throw new ArgumentException("Invalid Input");
+                    isError = true;
                 }
                 else if (frameArray[i][0] != '-' && frameArray[i][0] != 'X' && !int.TryParse(frameArray[i][0].ToString(), out int _))
                 {
-                    throw new ArgumentException("Invalid Input");
+                    isError = true;
                 }
                 else if (frameArray[i].Length > 1 && frameArray[i][1] != '-' && frameArray[i][1] != '/' && !int.TryParse(frameArray[i][1].ToString(), out int _) && i != 10)
                 {
-                    throw new ArgumentException("Invalid Input");
+                    isError = true;
                 }
                 else if (frameArray[i].Length == 2 && int.TryParse(frameArray[i][0].ToString(), out int firstNumber) && int.TryParse(frameArray[i][1].ToString(), out int secondNumber))
                 {
                     if (firstNumber + secondNumber > 9)
                     {
-                        throw new ArgumentException("Invalid Input");
+                        isError = true;
                     }
                 }
+            }
+            if (isError)
+            {
+                throw new ArgumentException("Invalid Input");
+            }
+        }
+
+        private void ValidateForExtraBall(ref string input, ref int noOfFrames, ref bool isError)
+        {
+            string[] framesWithExtraFrame = input.Split("||");
+            if (framesWithExtraFrame.Length > 2)
+            {
+                isError = true;
+            }
+            else if (framesWithExtraFrame.Length == 2)
+            {
+                input = input.Replace("||", "|");
+                noOfFrames++;
             }
         }
     }
