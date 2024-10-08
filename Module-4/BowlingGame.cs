@@ -157,7 +157,8 @@ namespace LearnTDD.Module_4
         private int GetBonusForStrike(string[] frameArray, int currentIndex)
         {
             int bonus = 0;
-            if (currentIndex + 1 == 10 && frameArray[currentIndex + 1].Contains('X'))
+            int extraBallFrameIndex = 10;
+            if (currentIndex + 1 == extraBallFrameIndex && frameArray[currentIndex + 1].Contains('X'))
             {
                 if (frameArray[currentIndex + 1][0] == 'X')
                 {
@@ -189,7 +190,7 @@ namespace LearnTDD.Module_4
             else if (frameArray[currentIndex + 1].Length == 1 && frameArray[currentIndex + 1][0] == 'X')
             {
                 bonus += 10;
-                if ((frameArray[currentIndex + 2].Length == 1 || currentIndex + 2 == 10) && frameArray[currentIndex + 2][0] == 'X')
+                if ((frameArray[currentIndex + 2].Length == 1 || currentIndex + 2 == extraBallFrameIndex) && frameArray[currentIndex + 2][0] == 'X')
                 {
                     bonus += 10;
                 }
