@@ -183,22 +183,13 @@ namespace LearnTDD.Module_4
 
             return bonus;
         }
-        //Handling extra ball cases like X1, X5, X9
+        //Handling extra ball cases like X1, X5, X9, XX
         private int GetBonusFromExtraBallsLastFrame(string[] frameArray, int currentIndex)
         {
             int bonus = 0;
             if (frameArray[currentIndex + 1][0] == 'X')
             {
                 bonus += 10;
-            }
-            else if (frameArray[currentIndex + 1][1] == '/')
-            {
-                bonus += 10;
-                return bonus;
-            }
-            else
-            {
-                bonus += GetNumericScore(frameArray[currentIndex + 1][0].ToString());
             }
 
             if (frameArray[currentIndex + 1][1] == 'X')
