@@ -38,6 +38,7 @@ namespace LearnTDD.Module_4
         [InlineData("X|X|X|X|X|X|X|X|X|X||XX||")]
         [InlineData("X|X|X|X|X|X|X|X|X|X||XXX")]
         [InlineData("X|X|X|X|X|X|X|X|X|X||X")]
+        [InlineData("X|X|X|X|X|X|X|X|X|4/||")]
         public void Throw_Error_For_Invalid_Input(string input)
         {
             Action act = () => _bowlingGameShould.Play(input);
@@ -244,7 +245,7 @@ namespace LearnTDD.Module_4
             {
                 isError = true;
             }
-            else if (frameArray[i].Length > 1 && !allowCharAtSecondPosition.Any(x=> x == frameArray[i][1]) && !int.TryParse(frameArray[i][1].ToString(), out int _))
+            else if (frameArray[i].Length > 1 && !allowCharAtSecondPosition.Any(x => x == frameArray[i][1]) && !int.TryParse(frameArray[i][1].ToString(), out int _))
             {
                 isError = true;
             }
@@ -279,13 +280,17 @@ namespace LearnTDD.Module_4
             {
                 isError = true;
             }
+            else if ((framesWithExtraFrame[0].Last() == '/') && framesWithExtraFrame[1].Length < 1)
+            {
+                isError = true;
+            }
             else if (framesWithExtraFrame[1].Length == 2 && framesWithExtraFrame[1][1] == 'X' && framesWithExtraFrame[1][0] != 'X')
             {
                 isError = true;
             }
             else if (!isError)
             {
-                isError = CommonValidation(framesWithExtraFrame, 1, ['-', 'X'], ['-', '/','X']);
+                isError = CommonValidation(framesWithExtraFrame, 1, ['-', 'X'], ['-', '/', 'X']);
             }
             else if (framesWithExtraFrame.Length == 2)
             {
