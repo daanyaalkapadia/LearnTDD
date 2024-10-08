@@ -223,28 +223,40 @@ namespace LearnTDD.Module_4
                 {
                     isError = true;
                 }
-                //common
-                else if (frameArray[i][0] != '-' && frameArray[i][0] != 'X' && !int.TryParse(frameArray[i][0].ToString(), out int _))
+                else if (!isError)
                 {
-                    isError = true;
-                }
-                else if (frameArray[i].Length > 1 && frameArray[i][1] != '-' && frameArray[i][1] != '/' && !int.TryParse(frameArray[i][1].ToString(), out int _))
-                {
-                    isError = true;
-                }
-                //common
-                else if (frameArray[i].Length == 2 && int.TryParse(frameArray[i][0].ToString(), out int firstNumber) && int.TryParse(frameArray[i][1].ToString(), out int secondNumber))
-                {
-                    if (firstNumber + secondNumber > 9)
-                    {
-                        isError = true;
-                    }
+                    isError = CommonValidation(frameArray, i, new char[] { '-', 'X' }, new char[] { '-', '/' });
                 }
             }
             if (isError)
             {
                 throw new ArgumentException("Invalid Input");
             }
+        }
+
+        private static bool CommonValidation(string[] frameArray, int i, char[] allowCharAtFirstPosition, char[] allowCharAtSecondPosition)
+        {
+            bool isError = false;
+
+
+            if (!allowCharAtFirstPosition.Any(x => x == frameArray[i][0]) && !int.TryParse(frameArray[i][0].ToString(), out int _))
+            {
+                isError = true;
+            }
+            else if (frameArray[i].Length > 1 && frameArray[i][1] != '-' && frameArray[i][1] != '/' && !int.TryParse(frameArray[i][1].ToString(), out int _))
+            {
+                isError = true;
+            }
+            //common
+            else if (frameArray[i].Length == 2 && int.TryParse(frameArray[i][0].ToString(), out int firstNumber) && int.TryParse(frameArray[i][1].ToString(), out int secondNumber))
+            {
+                if (firstNumber + secondNumber > 9)
+                {
+                    isError = true;
+                }
+            }
+
+            return isError;
         }
 
         private void ValidateForExtraBall(ref string input, ref bool isError)
@@ -259,7 +271,7 @@ namespace LearnTDD.Module_4
                 return;
             }
 
-            if(framesWithExtraFrame[1].Length > 2)
+            if (framesWithExtraFrame[1].Length > 2)
             {
                 isError = true;
             }
