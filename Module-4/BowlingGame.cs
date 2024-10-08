@@ -225,7 +225,7 @@ namespace LearnTDD.Module_4
                 }
                 else if (!isError)
                 {
-                    isError = CommonValidation(frameArray, i, new char[] { '-', 'X' }, new char[] { '-', '/' });
+                    isError = CommonValidation(frameArray, i, ['-', 'X'], ['-', '/']);
                 }
             }
             if (isError)
@@ -234,7 +234,7 @@ namespace LearnTDD.Module_4
             }
         }
 
-        private static bool CommonValidation(string[] frameArray, int i, char[] allowCharAtFirstPosition, char[] allowCharAtSecondPosition)
+        private bool CommonValidation(string[] frameArray, int i, char[] allowCharAtFirstPosition, char[] allowCharAtSecondPosition)
         {
             bool isError = false;
 
@@ -278,20 +278,9 @@ namespace LearnTDD.Module_4
             {
                 isError = true;
             }
-            else if (framesWithExtraFrame[1][0] != '-' && framesWithExtraFrame[1][0] != 'X' && !int.TryParse(framesWithExtraFrame[1][0].ToString(), out int _))
+            else if (!isError)
             {
-                isError = true;
-            }
-            else if (framesWithExtraFrame[1].Length > 1 && framesWithExtraFrame[1][1] != '-' && framesWithExtraFrame[1][1] != '/' && framesWithExtraFrame[1][1] != 'X' && !int.TryParse(framesWithExtraFrame[1][1].ToString(), out int _))
-            {
-                isError = true;
-            }
-            else if (framesWithExtraFrame[1].Length == 2 && int.TryParse(framesWithExtraFrame[1][0].ToString(), out int firstNumber) && int.TryParse(framesWithExtraFrame[1][1].ToString(), out int secondNumber))
-            {
-                if (firstNumber + secondNumber > 9)
-                {
-                    isError = true;
-                }
+                isError = CommonValidation(framesWithExtraFrame, 1, ['-', 'X'], ['-', '/','X']);
             }
             else if (framesWithExtraFrame.Length == 2)
             {
