@@ -201,6 +201,7 @@ namespace LearnTDD.Module_4
             }
             return result;
         }
+
         private int GetNumericScore(string input)
         {
             if (int.TryParse(input, out int number))
@@ -209,6 +210,7 @@ namespace LearnTDD.Module_4
             }
             return number;
         }
+
         private void Validate(string input)
         {
             int noOfFrames = 10;
@@ -227,6 +229,7 @@ namespace LearnTDD.Module_4
 
             string[] frameArray = input.Split('|');
             isError = ValidatingFrame(noOfFrames, isError, frameArray);
+
             if (!isError && framesWithExtraFrame.Length == 2)
             {
                 ValidateForExtraBall(extraBall, frameArray, ref isError);
@@ -259,6 +262,30 @@ namespace LearnTDD.Module_4
             return isError;
         }
 
+        private void ValidateForExtraBall(string input, string[] frameArray, ref bool isError)
+        {
+            if (input.Length > 2)
+            {
+                isError = true;
+            }
+            else if (frameArray.Last().Last() == 'X' && input.Length != 2)
+            {
+                isError = true;
+            }
+            else if ((frameArray.Last().Last() == '/' || (frameArray[frameArray.Length - 2].Last() == 'X' && frameArray.Last().Last() == '/')) && input.Length < 1)
+            {
+                isError = true;
+            }
+            else if (input.Length == 2 && input[1] == 'X' && input[0] != 'X')
+            {
+                isError = true;
+            }
+            else if (!isError)
+            {
+                isError = CommonValidation([input], 0, ['-', 'X'], ['-', '/', 'X']);
+            }
+        }
+
         private bool CommonValidation(string[] frameArray, int i, char[] allowCharAtFirstPosition, char[] allowCharAtSecondPosition)
         {
             bool isError = false;
@@ -283,28 +310,5 @@ namespace LearnTDD.Module_4
             return isError;
         }
 
-        private void ValidateForExtraBall(string input, string[] frameArray, ref bool isError)
-        {
-            if (input.Length > 2)
-            {
-                isError = true;
-            }
-            else if (frameArray.Last().Last() == 'X' && input.Length != 2)
-            {
-                isError = true;
-            }
-            else if ((frameArray.Last().Last() == '/' || (frameArray[frameArray.Length - 2].Last() == 'X' && frameArray.Last().Last() == '/')) && input.Length < 1)
-            {
-                isError = true;
-            }
-            else if (input.Length == 2 && input[1] == 'X' && input[0] != 'X')
-            {
-                isError = true;
-            }
-            else if (!isError)
-            {
-                isError = CommonValidation([input], 0, ['-', 'X'], ['-', '/', 'X']);
-            }
-        }
     }
 }
