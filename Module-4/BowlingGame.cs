@@ -188,16 +188,16 @@ namespace LearnTDD.Module_4
             int bonus = 0;
             if (frameArray[currentIndex + 1][0] == 'X')
             {
-                bonus += 10;
+                bonus += GetScore(frameArray[currentIndex + 1][0]);
             }
 
             if (frameArray[currentIndex + 1][1] == 'X')
             {
-                bonus += 10;
+                bonus += GetScore(frameArray[currentIndex + 1][1]);
             }
             else
             {
-                bonus += GetNumericScore(frameArray[currentIndex + 1][1]);
+                bonus += GetScore(frameArray[currentIndex + 1][1]);
             }
             return bonus;
         }
