@@ -214,11 +214,7 @@ namespace LearnTDD.Module_4
             string[] frameArray = input.Split('|');
             for (int i = 0; i < noOfFrames && !isError; i++)
             {
-                if (i == 10 && frameArray[i].Length == 2 && frameArray[i][1] == 'X' && frameArray[i][0] != 'X')
-                {
-                    isError = true;
-                }
-                else if (frameArray[i].Length != 2 && !(frameArray[i].Length == 1 && frameArray[i][0] == 'X' && i != 10) && !(frameArray[i].Length == 1 && i == 10))
+                if (frameArray[i].Length != 2 && !(frameArray[i].Length == 1 && frameArray[i][0] == 'X' && i != 10) && !(frameArray[i].Length == 1 && i == 10))
                 {
                     isError = true;
                 }
@@ -226,6 +222,7 @@ namespace LearnTDD.Module_4
                 {
                     isError = true;
                 }
+                //common
                 else if (frameArray[i][0] != '-' && frameArray[i][0] != 'X' && !int.TryParse(frameArray[i][0].ToString(), out int _))
                 {
                     isError = true;
@@ -234,6 +231,7 @@ namespace LearnTDD.Module_4
                 {
                     isError = true;
                 }
+                //common
                 else if (frameArray[i].Length == 2 && int.TryParse(frameArray[i][0].ToString(), out int firstNumber) && int.TryParse(frameArray[i][1].ToString(), out int secondNumber))
                 {
                     if (firstNumber + secondNumber > 9)
@@ -252,6 +250,15 @@ namespace LearnTDD.Module_4
         {
             string[] framesWithExtraFrame = input.Split("||");
             if (framesWithExtraFrame.Length > 2)
+            {
+                isError = true;
+            }
+            if(framesWithExtraFrame.Length == 1)
+            {
+                return;
+            }
+
+            if (framesWithExtraFrame[1].Length == 2 && framesWithExtraFrame[1][1] == 'X' && framesWithExtraFrame[1][0] != 'X')
             {
                 isError = true;
             }
