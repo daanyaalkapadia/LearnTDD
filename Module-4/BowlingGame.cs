@@ -116,6 +116,7 @@ namespace LearnTDD.Module_4
         public int Play(string input)
         {
             int result = 0;
+            Validate(input);
             if (input == "X|X|X|X|X|X|X|X|X|X||XX")
             {
                 return 300;
@@ -128,7 +129,6 @@ namespace LearnTDD.Module_4
             {
                 return 150;
             }
-            Validate(input);
 
             string[] frameArray = input.Split('|');
             for (int i = 0; i < 10; i++)
@@ -191,9 +191,20 @@ namespace LearnTDD.Module_4
         }
         private void Validate(string input)
         {
-            string[] frameArray = input.Split('|');
+            int noOfFrames = 10;
+            string[] framesWithExtraFrame = input.Split("||");
+            if(framesWithExtraFrame.Length > 2)
+            {
+                throw new ArgumentException("Invalid Input");
+            }
+            else if(framesWithExtraFrame.Length == 2)
+            {
+                input = input.Replace("||", "|");
+                noOfFrames++;
+            }
 
-            for (int i = 0; i < 10; i++)
+            string[] frameArray = input.Split('|');
+            for (int i = 0; i < noOfFrames; i++)
             {
                 if (frameArray[i].Length != 2 && !(frameArray[i].Length == 1 && frameArray[i][0] == 'X'))
                 {
