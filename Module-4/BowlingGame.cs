@@ -212,7 +212,17 @@ namespace LearnTDD.Module_4
         {
             int noOfFrames = 10;
             bool isError = false;
-            ValidateForExtraBall(ref input, ref isError);
+            string extraBall = string.Empty;
+            string[] framesWithExtraFrame = input.Split("||");
+            if (framesWithExtraFrame.Length > 2)
+            {
+                isError = true;
+            }
+            else if (framesWithExtraFrame.Length == 2)
+            {
+                input = framesWithExtraFrame[0];
+                extraBall = framesWithExtraFrame[1];
+            }
 
             string[] frameArray = input.Split('|');
             for (int i = 0; i < noOfFrames && !isError; i++)
@@ -230,6 +240,11 @@ namespace LearnTDD.Module_4
                     isError = CommonValidation(frameArray, i, ['-', 'X'], ['-', '/']);
                 }
             }
+            if (framesWithExtraFrame.Length == 2)
+            {
+                ValidateForExtraBall(extraBall, frameArray, ref isError);
+            }
+
             if (isError)
             {
                 throw new ArgumentException("Invalid Input");
@@ -260,41 +275,27 @@ namespace LearnTDD.Module_4
             return isError;
         }
 
-        private void ValidateForExtraBall(ref string input, ref bool isError)
+        private void ValidateForExtraBall(string input, string[] frameArray, ref bool isError)
         {
-            string[] framesWithExtraFrame = input.Split("||");
-            if (framesWithExtraFrame.Length > 2)
+            if (input.Length > 2)
             {
                 isError = true;
             }
-            if (framesWithExtraFrame.Length == 1)
-            {
-                return;
-            }
-
-            if (framesWithExtraFrame[1].Length > 2)
+            else if (frameArray.Last().Last() == 'X' && input.Length != 2)
             {
                 isError = true;
             }
-            else if (framesWithExtraFrame[0].Last() == 'X' && framesWithExtraFrame[1].Length != 2)
+            else if ((frameArray.Last().Last() == '/') && input.Length < 1)
             {
                 isError = true;
             }
-            else if ((framesWithExtraFrame[0].Last() == '/') && framesWithExtraFrame[1].Length < 1)
-            {
-                isError = true;
-            }
-            else if (framesWithExtraFrame[1].Length == 2 && framesWithExtraFrame[1][1] == 'X' && framesWithExtraFrame[1][0] != 'X')
+            else if (input.Length == 2 && input[1] == 'X' && input[0] != 'X')
             {
                 isError = true;
             }
             else if (!isError)
             {
-                isError = CommonValidation(framesWithExtraFrame, 1, ['-', 'X'], ['-', '/', 'X']);
-            }
-            else if (framesWithExtraFrame.Length == 2)
-            {
-                input = input.Replace("||", "|");
+                isError = CommonValidation([input], 0, ['-', 'X'], ['-', '/', 'X']);
             }
         }
     }
