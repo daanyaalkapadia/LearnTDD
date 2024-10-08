@@ -127,11 +127,12 @@ namespace LearnTDD.Module_4
         public int Play(string input)
         {
             int result = 0;
+            int numberOfFrame = 10;
             Validate(input);
 
             input = input.Replace("||", "|");
             string[] frameArray = input.Split('|');
-            for (int i = 0; i < 10; i++)
+            for (int i = 0; i < numberOfFrame; i++)
             {
                 if (frameArray[i][0] == 'X')
                 {
@@ -156,7 +157,7 @@ namespace LearnTDD.Module_4
         private int GetBonusForStrike(string[] frameArray, int currentIndex)
         {
             int bonus = 0;
-            if (currentIndex + 1 == 10 && frameArray[currentIndex + 1].Contains("X"))
+            if (currentIndex + 1 == 10 && frameArray[currentIndex + 1].Contains('X'))
             {
                 if (frameArray[currentIndex + 1][0] == 'X')
                 {
@@ -217,6 +218,7 @@ namespace LearnTDD.Module_4
 
             return bonusScore;
         }
+
         private int GetNumericScore(string input)
         {
             if (int.TryParse(input, out int number))
