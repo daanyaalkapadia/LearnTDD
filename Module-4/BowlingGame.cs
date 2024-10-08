@@ -137,7 +137,7 @@ namespace LearnTDD.Module_4
                 if (frameArray[i][0] == 'X')
                 {
                     result += GetScore(frameArray[i][0]);
-                    result += GetBonusForStrike(frameArray, i);
+                    result += GetScore(frameArray[i + 1][0]) + GetBonusForStrike(frameArray, i);
                 }
                 else if (frameArray[i][1] == '/')
                 {
@@ -164,16 +164,14 @@ namespace LearnTDD.Module_4
             }
             else if (frameArray[currentIndex + 1].Length > 1 && frameArray[currentIndex + 1][1] == '/')
             {
-                bonus += GetScore(frameArray[currentIndex + 1][1]);
+                bonus += (GetScore(frameArray[currentIndex + 1][1]) - GetScore(frameArray[currentIndex + 1][0]));
             }
             else if (frameArray[currentIndex + 1][0] == 'X')
             {
-                bonus += GetScore(frameArray[currentIndex + 1][0]);
                 bonus += GetScore(frameArray[currentIndex + 2][0]);
             }
             else
             {
-                bonus += GetScore(frameArray[currentIndex + 1][0]);
                 bonus += GetScore(frameArray[currentIndex + 1][1]);
             }
 
@@ -183,13 +181,7 @@ namespace LearnTDD.Module_4
         private int GetBonusFromExtraBallsLastFrame(string[] frameArray, int currentIndex)
         {
             int bonus = 0;
-            if (frameArray[currentIndex + 1][0] == 'X')
-            {
-                bonus += GetScore(frameArray[currentIndex + 1][0]);
-            }
-
             bonus += GetScore(frameArray[currentIndex + 1][1]);
-
             return bonus;
         }
 
