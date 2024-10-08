@@ -34,6 +34,8 @@ namespace LearnTDD.Module_4
         [InlineData("--|29|--|--|88|--|69|96|--|--")]
         // test cases for extra frame
         [InlineData("X|X|X|X|X|X|X|X|X|X||3X")]
+        [InlineData("X|X|X|X|X|X|X|X|X|X||/X")]
+        [InlineData("X|X|X|X|X|X|X|X|X|X||XX||")]
         public void Throw_Error_For_Invalid_Input(string input)
         {
             Action act = () => _bowlingGameShould.Play(input);
