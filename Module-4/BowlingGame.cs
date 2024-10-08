@@ -209,16 +209,16 @@ namespace LearnTDD.Module_4
         {
             int noOfFrames = 10;
             bool isError = false;
-            ValidateForExtraBall(ref input, ref noOfFrames, ref isError);
+            ValidateForExtraBall(ref input, ref isError);
 
             string[] frameArray = input.Split('|');
             for (int i = 0; i < noOfFrames && !isError; i++)
             {
-                if (frameArray[i].Length != 2 && !(frameArray[i].Length == 1 && frameArray[i][0] == 'X' && i != 10) && !(frameArray[i].Length == 1 && i == 10))
+                if (frameArray[i].Length != 2 && !(frameArray[i].Length == 1 && frameArray[i][0] == 'X'))
                 {
                     isError = true;
                 }
-                else if (frameArray[i].Length == 2 && frameArray[i][0] == 'X' && i != 10)
+                else if (frameArray[i].Length == 2 && frameArray[i][0] == 'X')
                 {
                     isError = true;
                 }
@@ -227,7 +227,7 @@ namespace LearnTDD.Module_4
                 {
                     isError = true;
                 }
-                else if (frameArray[i].Length > 1 && frameArray[i][1] != '-' && frameArray[i][1] != '/' && !int.TryParse(frameArray[i][1].ToString(), out int _) && i != 10)
+                else if (frameArray[i].Length > 1 && frameArray[i][1] != '-' && frameArray[i][1] != '/' && !int.TryParse(frameArray[i][1].ToString(), out int _))
                 {
                     isError = true;
                 }
@@ -246,7 +246,7 @@ namespace LearnTDD.Module_4
             }
         }
 
-        private void ValidateForExtraBall(ref string input, ref int noOfFrames, ref bool isError)
+        private void ValidateForExtraBall(ref string input, ref bool isError)
         {
             string[] framesWithExtraFrame = input.Split("||");
             if (framesWithExtraFrame.Length > 2)
@@ -262,10 +262,20 @@ namespace LearnTDD.Module_4
             {
                 isError = true;
             }
+            else if (framesWithExtraFrame[1][0] != '-' && framesWithExtraFrame[1][0] != 'X' && !int.TryParse(framesWithExtraFrame[1][0].ToString(), out int _))
+            {
+                isError = true;
+            }
+            else if (framesWithExtraFrame[1].Length == 2 && int.TryParse(framesWithExtraFrame[1][0].ToString(), out int firstNumber) && int.TryParse(framesWithExtraFrame[1][1].ToString(), out int secondNumber))
+            {
+                if (firstNumber + secondNumber > 9)
+                {
+                    isError = true;
+                }
+            }
             else if (framesWithExtraFrame.Length == 2)
             {
                 input = input.Replace("||", "|");
-                noOfFrames++;
             }
         }
     }
