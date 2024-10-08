@@ -142,7 +142,8 @@ namespace LearnTDD.Module_4
                 else if (frameArray[i][1] == '/')
                 {
                     result += GetScore(frameArray[i][1]);
-                    result += GetBonusScoreForSpare(frameArray, i);
+                    //bonus for spare
+                    result += GetScore(frameArray[i + 1][0]);
                 }
                 else
                 {
@@ -202,20 +203,6 @@ namespace LearnTDD.Module_4
             return bonus;
         }
 
-        private int GetBonusScoreForSpare(string[] frameArray, int currentIndex)
-        {
-            int bonusScore = 0;
-            if (frameArray[currentIndex + 1][0] == 'X')
-            {
-                bonusScore += 10;
-            }
-            else
-            {
-                bonusScore += GetNumericScore(frameArray[currentIndex + 1][0]);
-            }
-
-            return bonusScore;
-        }
         private int GetScore(char input)
         {
             switch (input)
