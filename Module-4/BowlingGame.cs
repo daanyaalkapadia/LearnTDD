@@ -136,19 +136,19 @@ namespace LearnTDD.Module_4
             {
                 if (frameArray[i][0] == 'X')
                 {
-                    result += 10;
+                    result += GetScore(frameArray[i][0]);
                     result += GetBonusForStrike(frameArray, i);
                 }
                 else if (frameArray[i][1] == '/')
                 {
-                    result += 10;
+                    result += GetScore(frameArray[i][1]);
                     //bonues next ball
                     result += GetBonusScoreForSpare(frameArray, i);
                 }
                 else
                 {
-                    result += GetNumericScore(frameArray[i][0]);
-                    result += GetNumericScore(frameArray[i][1]);
+                    result += GetScore(frameArray[i][0]);
+                    result += GetScore(frameArray[i][1]);
                 }
             }
             return result;
