@@ -184,14 +184,7 @@ namespace LearnTDD.Module_4
                 {
                     result += 10;
                     //bonues next ball
-                    if (frameArray[i + 1][0] == 'X')
-                    {
-                        result += 10;
-                    }
-                    else
-                    {
-                        result += GetNumericScore(frameArray[i + 1][0].ToString());
-                    }
+                    result += GetBonusScoreForSpare(frameArray, i);
                 }
                 else
                 {
@@ -201,7 +194,20 @@ namespace LearnTDD.Module_4
             }
             return result;
         }
+        private int GetBonusScoreForSpare(string[] frameArray, int currentIndex)
+        {
+            int bonusScore = 0;
+            if (frameArray[currentIndex + 1][0] == 'X')
+            {
+                bonusScore += 10;
+            }
+            else
+            {
+                bonusScore += GetNumericScore(frameArray[currentIndex + 1][0].ToString());
+            }
 
+            return bonusScore;
+        }
         private int GetNumericScore(string input)
         {
             if (int.TryParse(input, out int number))
