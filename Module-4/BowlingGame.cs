@@ -169,11 +169,7 @@ namespace LearnTDD.Module_4
             else if (frameArray[currentIndex + 1][0] == 'X')
             {
                 bonus += GetScore(frameArray[currentIndex + 1][0]);
-                if (frameArray[currentIndex + 2][0] == 'X')
-                {
-                    bonus += GetScore(frameArray[currentIndex + 2][0]);
-                }
-                bonus += GetNumericScore(frameArray[currentIndex + 2][0]);
+                bonus += GetScore(frameArray[currentIndex + 2][0]);
             }
             else
             {
