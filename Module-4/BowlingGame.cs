@@ -201,16 +201,21 @@ namespace LearnTDD.Module_4
                     continue;
                 }
 
-                if (int.TryParse(frameArray[i][0].ToString(), out int firstNumber))
-                {
-                    result += firstNumber;
-                }
+                result += GetNumericScore(frameArray[i][0].ToString());
                 if (int.TryParse(frameArray[i][1].ToString(), out int secondNumber))
                 {
                     result += secondNumber;
                 }
             }
             return result;
+        }
+        private int GetNumericScore(string input)
+        {
+            if (int.TryParse(input, out int number))
+            {
+                return number;
+            }
+            return number;
         }
         private void Validate(string input)
         {
