@@ -22,6 +22,7 @@ namespace LearnTDD.Module_5
         public static IEnumerable<object[]> ChangeTestDataForInvalidInput()
         {
             yield return new object[] { "A,0,0", "f" };
+            yield return new object[] { "B,0,0", "f" };
         }
     }
     public class MarsRover
@@ -29,6 +30,10 @@ namespace LearnTDD.Module_5
         public string Drive(string position, string command)
         {
             if(position == "A,0,0")
+            {
+                throw new ArgumentException("Invalid Input");
+            }
+            if (position == "B,0,0")
             {
                 throw new ArgumentException("Invalid Input");
             }
