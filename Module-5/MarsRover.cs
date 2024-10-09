@@ -59,14 +59,6 @@ namespace LearnTDD.Module_5
         {
             char[] validDirection = ['N', 'S', 'E', 'W'];
             char[] validCommnad = ['f', 'b', 'l', 'r'];
-            if (command == "x")
-            {
-                throw new ArgumentException("Invalid Input");
-            }
-            if (command == "t")
-            {
-                throw new ArgumentException("Invalid Input");
-            }
             if (command.Length > 0 && !validCommnad.Any(x => x == command[0]))
             {
                 throw new ArgumentException("Invalid Input");
