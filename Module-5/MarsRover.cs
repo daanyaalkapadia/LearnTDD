@@ -1,6 +1,4 @@
 ﻿using FluentAssertions;
-using LearnTDD.Module_4;
-using Microsoft.VisualStudio.TestPlatform.Utilities;
 
 namespace LearnTDD.Module_5
 {
@@ -28,7 +26,7 @@ namespace LearnTDD.Module_5
         }
         [Theory]
         [MemberData(nameof(ChangeTestDataForValidInput))]
-        public void Return_Valid_Result_For_Happy_Case(string position, string command,string output)
+        public void Return_Valid_Result_For_Happy_Case(string position, string command, string output)
         {
             Action act = () => _marsRover.Drive(position, command);
             string result = _marsRover.Drive(position, command);
@@ -47,7 +45,8 @@ namespace LearnTDD.Module_5
     {
         public string Drive(string position, string command)
         {
-            if(position == "A,0,0")
+            char[] validDirection = ['N', 'S', 'E', 'W'];
+            if (position == "A,0,0")
             {
                 throw new ArgumentException("Invalid Input");
             }
@@ -55,11 +54,11 @@ namespace LearnTDD.Module_5
             {
                 throw new ArgumentException("Invalid Input");
             }
-            if (position == "C,0,0")
+            if (!validDirection.Any(x => x == position[0]))
             {
                 throw new ArgumentException("Invalid Input");
             }
-            if(position =="N,0,0" && command == "")
+            if (position == "N,0,0" && command == "")
             {
                 return position;
             }
