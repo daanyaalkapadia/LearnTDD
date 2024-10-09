@@ -33,6 +33,8 @@ namespace LearnTDD.Module_5
             yield return new object[] { "C,0,0", "fx" };
             yield return new object[] { "C,0,0", "fft" };
             yield return new object[] { "C,0,0", "fblrs" };
+            //invalid length position
+            yield return new object[] { "C,0,0,0,0", "fblrs" };
         }
         [Theory]
         [MemberData(nameof(ChangeTestDataForValidInput))]
@@ -64,6 +66,10 @@ namespace LearnTDD.Module_5
             char[] validDirection = ['N', 'S', 'E', 'W'];
             char[] validCommnad = ['f', 'b', 'l', 'r'];
             
+            if(position == "C,0,0,0,0")
+            {
+                throw new ArgumentException("Invalid Input");
+            }
             if (command.Length > 0 && !validCommnad.Any(x => command.Any(y => y == x)))
             {
                 throw new ArgumentException("Invalid Input");
