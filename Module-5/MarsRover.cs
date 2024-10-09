@@ -23,6 +23,8 @@ namespace LearnTDD.Module_5
             yield return new object[] { "A,0,0", "f" };
             yield return new object[] { "B,0,0", "f" };
             yield return new object[] { "C,0,0", "f" };
+            yield return new object[] { "C,0,0", "f" };
+            yield return new object[] { "C,0,0", "x" };
         }
         [Theory]
         [MemberData(nameof(ChangeTestDataForValidInput))]
@@ -46,7 +48,10 @@ namespace LearnTDD.Module_5
         public string Drive(string position, string command)
         {
             char[] validDirection = ['N', 'S', 'E', 'W'];
-            
+            if(command == "x")
+            {
+                throw new ArgumentException("Invalid Input");
+            }
             if (!validDirection.Any(x => x == position[0]))
             {
                 throw new ArgumentException("Invalid Input");
