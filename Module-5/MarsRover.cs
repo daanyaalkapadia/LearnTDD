@@ -58,7 +58,8 @@ namespace LearnTDD.Module_5
         public string Drive(string position, string command)
         {
             char[] validDirection = ['N', 'S', 'E', 'W'];
-            if(command == "x")
+            char[] validCommnad = ['f', 'b', 'l', 'r'];
+            if (command == "x")
             {
                 throw new ArgumentException("Invalid Input");
             }
@@ -66,7 +67,7 @@ namespace LearnTDD.Module_5
             {
                 throw new ArgumentException("Invalid Input");
             }
-            if (command == "z")
+            if (command.Length > 0 && !validCommnad.Any(x => x == command[0]))
             {
                 throw new ArgumentException("Invalid Input");
             }
