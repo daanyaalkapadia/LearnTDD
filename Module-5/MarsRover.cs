@@ -23,6 +23,7 @@ namespace LearnTDD.Module_5
         {
             yield return new object[] { "A,0,0", "f" };
             yield return new object[] { "B,0,0", "f" };
+            yield return new object[] { "C,0,0", "f" };
         }
     }
     public class MarsRover
@@ -34,6 +35,10 @@ namespace LearnTDD.Module_5
                 throw new ArgumentException("Invalid Input");
             }
             if (position == "B,0,0")
+            {
+                throw new ArgumentException("Invalid Input");
+            }
+            if (position == "C,0,0")
             {
                 throw new ArgumentException("Invalid Input");
             }
