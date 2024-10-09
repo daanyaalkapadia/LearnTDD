@@ -35,6 +35,7 @@ namespace LearnTDD.Module_5
             yield return new object[] { "C,0,0", "fblrs" };
             //invalid length position
             yield return new object[] { "C,0,0,0,0", "fblrs" };
+            yield return new object[] { "", "fblrs" };
         }
         [Theory]
         [MemberData(nameof(ChangeTestDataForValidInput))]
@@ -67,6 +68,10 @@ namespace LearnTDD.Module_5
             char[] validCommnad = ['f', 'b', 'l', 'r'];
             
             if(position == "C,0,0,0,0")
+            {
+                throw new ArgumentException("Invalid Input");
+            }
+            if (position == "")
             {
                 throw new ArgumentException("Invalid Input");
             }
