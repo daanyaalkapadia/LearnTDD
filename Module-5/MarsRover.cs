@@ -20,10 +20,12 @@ namespace LearnTDD.Module_5
         }
         public static IEnumerable<object[]> ChangeTestDataForInvalidInput()
         {
+            //invalid direction
             yield return new object[] { "A,0,0", "f" };
             yield return new object[] { "B,0,0", "f" };
             yield return new object[] { "C,0,0", "f" };
             yield return new object[] { "C,0,0", "f" };
+            //invalid command
             yield return new object[] { "C,0,0", "x" };
         }
         [Theory]
@@ -37,6 +39,7 @@ namespace LearnTDD.Module_5
         }
         public static IEnumerable<object[]> ChangeTestDataForValidInput()
         {
+            //no movement
             yield return new object[] { "N,0,0", "", "N,0,0" };
             yield return new object[] { "S,0,0", "", "S,0,0" };
             yield return new object[] { "E,0,0", "", "E,0,0" };
