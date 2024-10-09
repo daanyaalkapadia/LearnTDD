@@ -46,14 +46,7 @@ namespace LearnTDD.Module_5
         public string Drive(string position, string command)
         {
             char[] validDirection = ['N', 'S', 'E', 'W'];
-            if (position == "A,0,0")
-            {
-                throw new ArgumentException("Invalid Input");
-            }
-            if (position == "B,0,0")
-            {
-                throw new ArgumentException("Invalid Input");
-            }
+            
             if (!validDirection.Any(x => x == position[0]))
             {
                 throw new ArgumentException("Invalid Input");
