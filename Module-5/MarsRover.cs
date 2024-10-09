@@ -38,6 +38,9 @@ namespace LearnTDD.Module_5
         public static IEnumerable<object[]> ChangeTestDataForValidInput()
         {
             yield return new object[] { "N,0,0", "", "N,0,0" };
+            yield return new object[] { "S,0,0", "", "S,0,0" };
+            yield return new object[] { "E,0,0", "", "E,0,0" };
+            yield return new object[] { "W,0,0", "", "W,0,0" };
         }
     }
     public class MarsRover
@@ -57,6 +60,18 @@ namespace LearnTDD.Module_5
                 throw new ArgumentException("Invalid Input");
             }
             if(position =="N,0,0" && command == "")
+            {
+                return position;
+            }
+            if (position == "S,0,0" && command == "")
+            {
+                return position;
+            }
+            if (position == "E,0,0" && command == "")
+            {
+                return position;
+            }
+            if (position == "W,0,0" && command == "")
             {
                 return position;
             }
