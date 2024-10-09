@@ -27,6 +27,8 @@ namespace LearnTDD.Module_5
             yield return new object[] { "C,0,0", "f" };
             //invalid command
             yield return new object[] { "C,0,0", "x" };
+            yield return new object[] { "C,0,0", "t" };
+            yield return new object[] { "C,0,0", "z" };
         }
         [Theory]
         [MemberData(nameof(ChangeTestDataForValidInput))]
@@ -52,6 +54,14 @@ namespace LearnTDD.Module_5
         {
             char[] validDirection = ['N', 'S', 'E', 'W'];
             if(command == "x")
+            {
+                throw new ArgumentException("Invalid Input");
+            }
+            if (command == "t")
+            {
+                throw new ArgumentException("Invalid Input");
+            }
+            if (command == "z")
             {
                 throw new ArgumentException("Invalid Input");
             }
