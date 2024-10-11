@@ -26,9 +26,9 @@ namespace LearnTDD.Module_5
             yield return new object[] { "C,0,0", "f" };
             yield return new object[] { "C,0,0", "f" };
             //invalid command
-            yield return new object[] { "C,0,0", "x" };
-            yield return new object[] { "C,0,0", "t" };
-            yield return new object[] { "C,0,0", "z" };
+            yield return new object[] { "W,0,0", "x" };
+            yield return new object[] { "W,0,0", "t" };
+            yield return new object[] { "W,0,0", "z" };
             //invalida multi command
             yield return new object[] { "C,0,0", "fx" };
             yield return new object[] { "C,0,0", "fft" };
@@ -76,34 +76,7 @@ namespace LearnTDD.Module_5
     {
         public string Drive(string position, string command)
         {
-            char[] validDirection = ['N', 'S', 'E', 'W'];
-            char[] validCommnad = ['f', 'b', 'l', 'r'];
-
-            if (position.Length < 5 || position.Length > 6)
-            {
-                throw new ArgumentException("Invalid Input");
-            }
-            string[] positionArray = position.Split(',');
-            if (positionArray.Length != 3)
-            {
-                throw new ArgumentException("Invalid Input");
-            }
-            if (!int.TryParse(positionArray[1], out int xIndex) || xIndex < 0 || xIndex > 20)
-            {
-                throw new ArgumentException("Invalid Input");
-            }
-            if (!int.TryParse(positionArray[2], out int yIndex) || yIndex < 0 || yIndex > 20)
-            {
-                throw new ArgumentException("Invalid Input");
-            }
-            if (command.Length > 0 && !validCommnad.Any(x => command.Any(y => y == x)))
-            {
-                throw new ArgumentException("Invalid Input");
-            }
-            if (!validDirection.Any(x => x == position[0]))
-            {
-                throw new ArgumentException("Invalid Input");
-            }
+            ValidateInput(position, command);
             if (position == "N,0,0" && command == "")
             {
                 return position;
@@ -137,6 +110,38 @@ namespace LearnTDD.Module_5
                 return "N,0,0";
             }
             return string.Empty;
+        }
+
+        private void ValidateInput(string position, string command)
+        {
+            char[] validDirection = ['N', 'S', 'E', 'W'];
+            char[] validCommnad = ['f', 'b', 'l', 'r'];
+
+            if (position.Length < 5 || position.Length > 6)
+            {
+                throw new ArgumentException("Invalid Input");
+            }
+            string[] positionArray = position.Split(',');
+            if (positionArray.Length != 3)
+            {
+                throw new ArgumentException("Invalid Input");
+            }
+            if (!int.TryParse(positionArray[1], out int xIndex) || xIndex < 0 || xIndex > 20)
+            {
+                throw new ArgumentException("Invalid Input");
+            }
+            if (!int.TryParse(positionArray[2], out int yIndex) || yIndex < 0 || yIndex > 20)
+            {
+                throw new ArgumentException("Invalid Input");
+            }
+            if (command.Length > 0 && !validCommnad.Any(x => command.Any(y => y == x)))
+            {
+                throw new ArgumentException("Invalid Input");
+            }
+            if (!validDirection.Any(x => x == position[0]))
+            {
+                throw new ArgumentException("Invalid Input");
+            }
         }
     }
 }
