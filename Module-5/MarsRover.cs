@@ -111,6 +111,8 @@ namespace LearnTDD.Module_5
     }
     public class MarsRover
     {
+        private const int MaxXPosition = 20;
+        private const int MaxYPosition = 10;
         public string Drive(string position, string command)
         {
             var endPosition = ValidateInput(position, command);
@@ -161,10 +163,10 @@ namespace LearnTDD.Module_5
                     MoveOnYAxis(endPosition, direction == 'f' ? 'b' : 'f');
                     break;
                 case Direction.W:
-                    endPosition.XPosition = MoveOnXAxis(endPosition.XPosition, direction == 'f' ? 'b' : 'f');
+                    endPosition.XPosition = MoveOnXAxis(endPosition.XPosition, direction == 'f' ? 'b' : 'f', MaxXPosition);
                     break;
                 case Direction.E:
-                    endPosition.XPosition = MoveOnXAxis(endPosition.XPosition, direction);
+                    endPosition.XPosition = MoveOnXAxis(endPosition.XPosition, direction, MaxXPosition);
                     break;
             }
         }
@@ -183,18 +185,18 @@ namespace LearnTDD.Module_5
                 }
             }
         }
-        private int MoveOnXAxis(int currentPosition, char direction)
+        private int MoveOnXAxis(int currentPosition, char direction, int maxPosition)
         {
             if (direction == 'f')
             {
-                currentPosition = (currentPosition + 1) % 21;
+                currentPosition = (currentPosition + 1) % (maxPosition + 1);
             }
             else if (direction == 'b')
             {
                 currentPosition--;
                 if (currentPosition < 0)
                 {
-                    currentPosition = 20;
+                    currentPosition = maxPosition;
                 }
             }
             return currentPosition;
