@@ -120,7 +120,7 @@ namespace LearnTDD.Module_5
                 return endPosition.ToString();
             }
 
-            foreach(var move in command)
+            foreach (var move in command)
             {
                 switch (move)
                 {
@@ -128,6 +128,9 @@ namespace LearnTDD.Module_5
                         Move(endPosition, move);
                         break;
                     case 'b':
+                        if (endPosition.Direction == Direction.N || endPosition.Direction == Direction.E) 
+                            Move(endPosition, move);
+                        else
                         MoveBackward(endPosition);
                         break;
                     case 'l':
@@ -138,7 +141,7 @@ namespace LearnTDD.Module_5
                         break;
                 }
             }
-            
+
             return endPosition.ToString();
         }
 
@@ -173,7 +176,7 @@ namespace LearnTDD.Module_5
             switch (endPosition.Direction)
             {
                 case Direction.N:
-                    MoveOnYAxis(endPosition, direction == 'f' ? direction : 'b');
+                    MoveOnYAxis(endPosition, direction);
                     break;
                 case Direction.S:
                     MoveOnYAxis(endPosition, direction == 'f' ? 'b' : direction);
@@ -182,7 +185,7 @@ namespace LearnTDD.Module_5
                     MoveOnXAxis(endPosition, direction == 'f' ? 'b' : direction);
                     break;
                 case Direction.E:
-                    MoveOnXAxis(endPosition, direction == 'f' ? direction : 'b');
+                    MoveOnXAxis(endPosition, direction);
                     break;
             }
         }
