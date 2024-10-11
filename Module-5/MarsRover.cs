@@ -75,15 +75,7 @@ namespace LearnTDD.Module_5
             {
                 throw new ArgumentException("Invalid Input");
             }
-            if (position == "W;0;0")
-            {
-                throw new ArgumentException("Invalid Input");
-            }
-            if (position == "W;0|0")
-            {
-                throw new ArgumentException("Invalid Input");
-            }
-            if (position == "W)0|0")
+            if (position[1] != ',' || position[3] != ',')
             {
                 throw new ArgumentException("Invalid Input");
             }
