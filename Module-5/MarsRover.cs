@@ -260,9 +260,9 @@ namespace LearnTDD.Module_5
             YPosition = y;
             Direction = (Direction)Enum.Parse(typeof(Direction), direction, true);
         }
-        public int XPosition;
-        public int YPosition;
-        public Direction Direction;
+        public int XPosition { get; set; }
+        public int YPosition { get; set; }
+        public Direction Direction { get; set; }
         public override string ToString()
         {
             return Direction.ToString() + ',' + XPosition + "," + YPosition;
