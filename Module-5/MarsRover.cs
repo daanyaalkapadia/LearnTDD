@@ -76,15 +76,17 @@ namespace LearnTDD.Module_5
     {
         public string Drive(string position, string command)
         {
-            var positionObj = ValidateInput(position, command);
-            
-            if(command == "")
+            var endPosition = ValidateInput(position, command);
+
+            if (command == "")
             {
-                return positionObj.ToString();
+                return endPosition.ToString();
             }
-            if (position == "N,0,0" && command == "f")
+
+            if (command == "f")
             {
-                return "N,0,1";
+                endPosition.YPosition += 1;
+                return endPosition.ToString();
             }
             if (position == "S,0,0" && command == "b")
             {
