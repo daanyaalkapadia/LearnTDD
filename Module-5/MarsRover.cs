@@ -157,35 +157,20 @@ namespace LearnTDD.Module_5
             switch (endPosition.Direction)
             {
                 case Direction.N:
-                    MoveOnYAxis(endPosition, direction);
+                    endPosition.YPosition = MoveOnAxis(endPosition.YPosition, direction, MaxYPosition);
                     break;
                 case Direction.S:
-                    MoveOnYAxis(endPosition, direction == 'f' ? 'b' : 'f');
+                    endPosition.YPosition = MoveOnAxis(endPosition.YPosition, direction == 'f' ? 'b' : 'f', MaxYPosition);
                     break;
                 case Direction.W:
-                    endPosition.XPosition = MoveOnXAxis(endPosition.XPosition, direction == 'f' ? 'b' : 'f', MaxXPosition);
+                    endPosition.XPosition = MoveOnAxis(endPosition.XPosition, direction == 'f' ? 'b' : 'f', MaxXPosition);
                     break;
                 case Direction.E:
-                    endPosition.XPosition = MoveOnXAxis(endPosition.XPosition, direction, MaxXPosition);
+                    endPosition.XPosition = MoveOnAxis(endPosition.XPosition, direction, MaxXPosition);
                     break;
             }
         }
-        private void MoveOnYAxis(Position position, char direction)
-        {
-            if (direction == 'f')
-            {
-                position.YPosition = (position.YPosition + 1) % 11;
-            }
-            else if (direction == 'b')
-            {
-                position.YPosition = (position.YPosition - 1);
-                if (position.YPosition < 0)
-                {
-                    position.YPosition = 10;
-                }
-            }
-        }
-        private int MoveOnXAxis(int currentPosition, char direction, int maxPosition)
+        private int MoveOnAxis(int currentPosition, char direction, int maxPosition)
         {
             if (direction == 'f')
             {
