@@ -135,8 +135,6 @@ namespace LearnTDD.Module_5
                 {
                     MoveOnXAxis(endPosition, "f");
                 }
-
-                return endPosition.ToString();
             }
             else if (command == "b")
             {
@@ -156,7 +154,6 @@ namespace LearnTDD.Module_5
                 {
                     MoveOnXAxis(endPosition, "b");
                 }
-                return endPosition.ToString();
             }
             else if (command == "l")
             {
@@ -176,19 +173,10 @@ namespace LearnTDD.Module_5
                 {
                     endPosition.Direction = Direction.N;
                 }
-                return endPosition.ToString();
             }
             else if (command == "r")
             {
-                if (endPosition.Direction == Direction.W)
-                {
-                    endPosition.Direction = Direction.N;
-                }
-                else
-                {
-                    endPosition.Direction += 1;
-                }
-                return endPosition.ToString();
+                endPosition.Direction = (Direction)(((int)endPosition.Direction + 1) % 4);
             }
 
             return endPosition.ToString();
