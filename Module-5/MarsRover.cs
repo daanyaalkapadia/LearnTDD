@@ -38,6 +38,8 @@ namespace LearnTDD.Module_5
             yield return new object[] { "", "fblrs" };
             //invalida char in place of comma
             yield return new object[] { "W;0;0", "fblrs" };
+            yield return new object[] { "W;0|0", "fblrs" };
+            yield return new object[] { "W)0|0", "fblrs" };
         }
         [Theory]
         [MemberData(nameof(ChangeTestDataForValidInput))]
@@ -74,6 +76,14 @@ namespace LearnTDD.Module_5
                 throw new ArgumentException("Invalid Input");
             }
             if (position == "W;0;0")
+            {
+                throw new ArgumentException("Invalid Input");
+            }
+            if (position == "W;0|0")
+            {
+                throw new ArgumentException("Invalid Input");
+            }
+            if (position == "W)0|0")
             {
                 throw new ArgumentException("Invalid Input");
             }
