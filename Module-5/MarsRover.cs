@@ -118,15 +118,11 @@ namespace LearnTDD.Module_5
                 }
                 else if (endPosition.Direction == Direction.W)
                 {
-                    endPosition.XPosition = (endPosition.XPosition - 1);
-                    if (endPosition.XPosition < 0)
-                    {
-                        endPosition.XPosition = 20;
-                    }
+                    MoveOnXAxis(endPosition, "b");
                 }
                 else if (endPosition.Direction == Direction.E)
                 {
-                    endPosition.XPosition = (endPosition.XPosition + 1) % 21;
+                    MoveOnXAxis(endPosition, "f");
                 }
 
                 return endPosition.ToString();
@@ -143,15 +139,11 @@ namespace LearnTDD.Module_5
                 }
                 else if (endPosition.Direction == Direction.W)
                 {
-                    endPosition.XPosition = (endPosition.XPosition + 1) % 21;
+                    MoveOnXAxis(endPosition, "f");
                 }
                 else if (endPosition.Direction == Direction.E)
                 {
-                    endPosition.XPosition = (endPosition.XPosition - 1);
-                    if (endPosition.XPosition < 0)
-                    {
-                        endPosition.XPosition = 20;
-                    }
+                    MoveOnXAxis(endPosition, "b");
                 }
                 return endPosition.ToString();
             }
@@ -181,7 +173,21 @@ namespace LearnTDD.Module_5
                 }
             }
         }
-
+        private void MoveOnXAxis(Position position, string direction)
+        {
+            if (direction == "f")
+            {
+                position.XPosition = (position.XPosition + 1) % 21;
+            }
+            else if (direction == "b")
+            {
+                position.XPosition = (position.XPosition - 1);
+                if (position.XPosition < 0)
+                {
+                    position.XPosition = 20;
+                }
+            }
+        }
         private Position ValidateInput(string position, string command)
         {
             char[] validDirection = ['N', 'S', 'E', 'W'];
