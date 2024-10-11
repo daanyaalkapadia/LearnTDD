@@ -125,7 +125,7 @@ namespace LearnTDD.Module_5
                 switch (move)
                 {
                     case 'f':
-                        MoveForward(endPosition);
+                        Move(endPosition, move);
                         break;
                     case 'b':
                         MoveBackward(endPosition);
@@ -155,44 +155,44 @@ namespace LearnTDD.Module_5
             switch (endPosition.Direction)
             {
                 case Direction.N:
-                    MoveOnYAxis(endPosition, "b");
+                    MoveOnYAxis(endPosition, 'b');
                     break;
                 case Direction.S:
-                    MoveOnYAxis(endPosition, "f");
+                    MoveOnYAxis(endPosition, 'f');
                     break;
                 case Direction.W:
-                    MoveOnXAxis(endPosition, "f");
+                    MoveOnXAxis(endPosition, 'f');
                     break;
                 case Direction.E:
-                    MoveOnXAxis(endPosition, "b");
+                    MoveOnXAxis(endPosition, 'b');
                     break;
             }
         }
-        private void MoveForward(Position endPosition)
+        private void Move(Position endPosition, char direction)
         {
             switch (endPosition.Direction)
             {
                 case Direction.N:
-                    MoveOnYAxis(endPosition, "f");
+                    MoveOnYAxis(endPosition, direction == 'f' ? direction : 'b');
                     break;
                 case Direction.S:
-                    MoveOnYAxis(endPosition, "b");
+                    MoveOnYAxis(endPosition, direction == 'f' ? 'b' : direction);
                     break;
                 case Direction.W:
-                    MoveOnXAxis(endPosition, "b");
+                    MoveOnXAxis(endPosition, direction == 'f' ? 'b' : direction);
                     break;
                 case Direction.E:
-                    MoveOnXAxis(endPosition, "f");
+                    MoveOnXAxis(endPosition, direction == 'f' ? direction : 'b');
                     break;
             }
         }
-        private void MoveOnYAxis(Position position, string direction)
+        private void MoveOnYAxis(Position position, char direction)
         {
-            if (direction == "f")
+            if (direction == 'f')
             {
                 position.YPosition = (position.YPosition + 1) % 11;
             }
-            else if (direction == "b")
+            else if (direction == 'b')
             {
                 position.YPosition = (position.YPosition - 1);
                 if (position.YPosition < 0)
@@ -201,13 +201,13 @@ namespace LearnTDD.Module_5
                 }
             }
         }
-        private void MoveOnXAxis(Position position, string direction)
+        private void MoveOnXAxis(Position position, char direction)
         {
-            if (direction == "f")
+            if (direction == 'f')
             {
                 position.XPosition = (position.XPosition + 1) % 21;
             }
-            else if (direction == "b")
+            else if (direction == 'b')
             {
                 position.XPosition = (position.XPosition - 1);
                 if (position.XPosition < 0)
