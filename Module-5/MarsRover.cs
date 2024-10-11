@@ -148,7 +148,7 @@ namespace LearnTDD.Module_5
                 {
                     endPosition.YPosition = (endPosition.YPosition + 1) % 11;
                 }
-                else if (endPosition.Direction == Direction.E)
+                else if (endPosition.Direction == Direction.W)
                 {
                     endPosition.XPosition = (endPosition.XPosition + 1) % 21;
                 }
