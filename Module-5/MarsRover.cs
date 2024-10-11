@@ -116,6 +116,7 @@ namespace LearnTDD.Module_5
             {
                 return endPosition.ToString();
             }
+
             if (command == "f")
             {
                 if (endPosition.Direction == Direction.N)
@@ -157,9 +158,9 @@ namespace LearnTDD.Module_5
                 }
                 return endPosition.ToString();
             }
-            else if(command == "l")
+            else if (command == "l")
             {
-                if(endPosition.Direction == Direction.N)
+                if (endPosition.Direction == Direction.N)
                 {
                     endPosition.Direction = Direction.W;
                 }
@@ -179,21 +180,13 @@ namespace LearnTDD.Module_5
             }
             else if (command == "r")
             {
-                if (endPosition.Direction == Direction.N)
-                {
-                    endPosition.Direction = Direction.E;
-                }
-                else if (endPosition.Direction == Direction.S)
-                {
-                    endPosition.Direction = Direction.W;
-                }
-                else if (endPosition.Direction == Direction.W)
+                if (endPosition.Direction == Direction.W)
                 {
                     endPosition.Direction = Direction.N;
                 }
-                else if (endPosition.Direction == Direction.E)
+                else
                 {
-                    endPosition.Direction = Direction.S;
+                    endPosition.Direction += 1;
                 }
                 return endPosition.ToString();
             }
@@ -202,11 +195,11 @@ namespace LearnTDD.Module_5
         }
         private void MoveOnYAxis(Position position, string direction)
         {
-            if(direction == "f")
+            if (direction == "f")
             {
                 position.YPosition = (position.YPosition + 1) % 11;
             }
-            else if(direction == "b")
+            else if (direction == "b")
             {
                 position.YPosition = (position.YPosition - 1);
                 if (position.YPosition < 0)
