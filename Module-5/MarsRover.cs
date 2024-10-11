@@ -116,22 +116,6 @@ namespace LearnTDD.Module_5
             {
                 return endPosition.ToString();
             }
-            if (position == "N,5,9" && command == "r")
-            {
-                return "E,5,9";
-            }
-            if (position == "S,5,9" && command == "r")
-            {
-                return "W,5,9";
-            }
-            if (position == "W,5,9" && command == "r")
-            {
-                return "N,5,9";
-            }
-            if (position == "E,5,9" && command == "r")
-            {
-                return "S,5,9";
-            }
             if (command == "f")
             {
                 if (endPosition.Direction == Direction.N)
@@ -193,14 +177,27 @@ namespace LearnTDD.Module_5
                 }
                 return endPosition.ToString();
             }
-            if (position == "E,0,0" && command == "l")
+            else if (command == "r")
             {
-                return "N,0,0";
+                if (endPosition.Direction == Direction.N)
+                {
+                    endPosition.Direction = Direction.E;
+                }
+                else if (endPosition.Direction == Direction.S)
+                {
+                    endPosition.Direction = Direction.W;
+                }
+                else if (endPosition.Direction == Direction.W)
+                {
+                    endPosition.Direction = Direction.N;
+                }
+                else if (endPosition.Direction == Direction.E)
+                {
+                    endPosition.Direction = Direction.S;
+                }
+                return endPosition.ToString();
             }
-            if (position == "W,0,0" && command == "r")
-            {
-                return "N,0,0";
-            }
+
             return endPosition.ToString();
         }
         private void MoveOnYAxis(Position position, string direction)
