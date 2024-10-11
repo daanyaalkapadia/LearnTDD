@@ -85,6 +85,7 @@ namespace LearnTDD.Module_5
             yield return new object[] { "E,20,0", "f", "E,0,0" };
             yield return new object[] { "E,15,0", "f", "E,16,0" };
             yield return new object[] { "E,2,9", "f", "E,3,9" };
+            //b command
         }
     }
     public class MarsRover
@@ -101,11 +102,7 @@ namespace LearnTDD.Module_5
             {
                 if (endPosition.Direction == "N")
                 {
-                    endPosition.YPosition = (endPosition.YPosition + 1);
-                    if (endPosition.YPosition > 10)
-                    {
-                        endPosition.YPosition = 0;
-                    }
+                    endPosition.YPosition = (endPosition.YPosition + 1) % 11;
                 }
                 else if (endPosition.Direction == "S")
                 {
@@ -125,11 +122,7 @@ namespace LearnTDD.Module_5
                 }
                 else if (endPosition.Direction == "E")
                 {
-                    endPosition.XPosition = (endPosition.XPosition + 1);
-                    if (endPosition.XPosition > 20)
-                    {
-                        endPosition.XPosition = 0;
-                    }
+                    endPosition.XPosition = (endPosition.XPosition + 1) % 21;
                 }
 
                 return endPosition.ToString();
