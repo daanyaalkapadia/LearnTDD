@@ -76,7 +76,7 @@ namespace LearnTDD.Module_5
     {
         public string Drive(string position, string command)
         {
-            ValidateInput(position, command);
+            var positionObj = ValidateInput(position, command);
             if (position == "N,0,0" && command == "")
             {
                 return position;
@@ -117,10 +117,6 @@ namespace LearnTDD.Module_5
             char[] validDirection = ['N', 'S', 'E', 'W'];
             char[] validCommnad = ['f', 'b', 'l', 'r'];
 
-            if (position.Length < 5 || position.Length > 7)
-            {
-                throw new ArgumentException("Invalid Input");
-            }
             string[] positionArray = position.Split(',');
             if (positionArray.Length != 3)
             {
