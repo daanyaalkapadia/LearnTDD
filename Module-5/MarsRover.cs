@@ -82,11 +82,8 @@ namespace LearnTDD.Module_5
             {
                 throw new ArgumentException("Invalid Input");
             }
-            if(position == "W,-1,0")
-            {
-                throw new ArgumentException("Invalid Input");
-            }
-            if (position == "W,21,0")
+            string[] positionArray = position.Split(',');
+            if (!int.TryParse(positionArray[1], out int xIndex) && xIndex >= 0 && xIndex <=20)
             {
                 throw new ArgumentException("Invalid Input");
             }
