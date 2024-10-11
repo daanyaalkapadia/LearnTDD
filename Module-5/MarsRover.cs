@@ -40,6 +40,8 @@ namespace LearnTDD.Module_5
             yield return new object[] { "W;0;0", "fblrs" };
             yield return new object[] { "W;0|0", "fblrs" };
             yield return new object[] { "W)0|0", "fblrs" };
+            //invalid x co-ordinate
+            yield return new object[] { "W,-1,0", "f" };
         }
         [Theory]
         [MemberData(nameof(ChangeTestDataForValidInput))]
@@ -76,6 +78,10 @@ namespace LearnTDD.Module_5
                 throw new ArgumentException("Invalid Input");
             }
             if (position[1] != ',' || position[3] != ',')
+            {
+                throw new ArgumentException("Invalid Input");
+            }
+            if(position == "W,-1,0")
             {
                 throw new ArgumentException("Invalid Input");
             }
