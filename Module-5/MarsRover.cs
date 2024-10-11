@@ -107,6 +107,8 @@ namespace LearnTDD.Module_5
             //multiple command
             yield return new object[] { "E,5,9", "rf", "S,5,8" };
             yield return new object[] { "N,0,0", "rrf", "S,0,10" };
+            yield return new object[] { "W,0,0", "lf", "S,0,10" };
+            yield return new object[] { "N,1,1", "rrf", "S,1,0" };
         }
     }
     public class MarsRover
