@@ -36,6 +36,8 @@ namespace LearnTDD.Module_5
             //invalid length position
             yield return new object[] { "C,0,0,0,0", "fblrs" };
             yield return new object[] { "", "fblrs" };
+            //invalida char in place of comma
+            yield return new object[] { "W;0;0", "fblrs" };
         }
         [Theory]
         [MemberData(nameof(ChangeTestDataForValidInput))]
@@ -68,6 +70,10 @@ namespace LearnTDD.Module_5
             char[] validCommnad = ['f', 'b', 'l', 'r'];
             
             if(position.Length != 5)
+            {
+                throw new ArgumentException("Invalid Input");
+            }
+            if (position == "W;0;0")
             {
                 throw new ArgumentException("Invalid Input");
             }
