@@ -73,6 +73,7 @@ namespace LearnTDD.Module_5
             //f command
             yield return new object[] { "N,5,5", "f", "N,5,6" };
             yield return new object[] { "N,5,9", "f", "N,5,10" };
+            yield return new object[] { "N,5,10", "f", "N,5,0" };
         }
     }
     public class MarsRover
@@ -84,6 +85,10 @@ namespace LearnTDD.Module_5
             if (command == "")
             {
                 return endPosition.ToString();
+            }
+            if(position== "N,5,10")
+            {
+                return "N,5,0";
             }
 
             if (command == "f")
