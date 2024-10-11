@@ -154,29 +154,30 @@ namespace LearnTDD.Module_5
         }
         private void Move(Position endPosition, char direction)
         {
+            bool isForward = direction == 'f';
             switch (endPosition.Direction)
             {
                 case Direction.N:
-                    endPosition.YPosition = MoveOnAxis(endPosition.YPosition, direction, MaxYPosition);
+                    endPosition.YPosition = MoveOnAxis(endPosition.YPosition, isForward, MaxYPosition);
                     break;
                 case Direction.S:
-                    endPosition.YPosition = MoveOnAxis(endPosition.YPosition, direction == 'f' ? 'b' : 'f', MaxYPosition);
+                    endPosition.YPosition = MoveOnAxis(endPosition.YPosition, !isForward, MaxYPosition);
                     break;
                 case Direction.W:
-                    endPosition.XPosition = MoveOnAxis(endPosition.XPosition, direction == 'f' ? 'b' : 'f', MaxXPosition);
+                    endPosition.XPosition = MoveOnAxis(endPosition.XPosition, !isForward, MaxXPosition);
                     break;
                 case Direction.E:
-                    endPosition.XPosition = MoveOnAxis(endPosition.XPosition, direction, MaxXPosition);
+                    endPosition.XPosition = MoveOnAxis(endPosition.XPosition, isForward, MaxXPosition);
                     break;
             }
         }
-        private int MoveOnAxis(int currentPosition, char direction, int maxPosition)
+        private int MoveOnAxis(int currentPosition, bool isForward, int maxPosition)
         {
-            if (direction == 'f')
+            if (isForward)
             {
                 currentPosition = (currentPosition + 1) % (maxPosition + 1);
             }
-            else if (direction == 'b')
+            else
             {
                 currentPosition--;
                 if (currentPosition < 0)
@@ -189,7 +190,7 @@ namespace LearnTDD.Module_5
         private Position ValidateInput(string position, string command)
         {
             char[] validDirection = ['N', 'S', 'E', 'W'];
-            char[] validCommnad = ['f', 'b', 'l', 'r'];
+            char[] validCommand = ['f', 'b', 'l', 'r'];
 
             string[] positionArray = position.Split(',');
             //Validate for Length
@@ -208,7 +209,7 @@ namespace LearnTDD.Module_5
                 throw new ArgumentException("Invalid Input");
             }
             //validate command
-            if (command.Length > 0 && !validCommnad.Any(x => command.Any(y => y == x)))
+            if (command.Length > 0 && !validCommand.Any(x => command.Any(y => y == x)))
             {
                 throw new ArgumentException("Invalid Input");
             }
