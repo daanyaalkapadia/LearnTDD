@@ -122,29 +122,33 @@ namespace LearnTDD.Module_5
 
             foreach(var move in command)
             {
-                if (move == 'f')
+                switch (move)
                 {
-                    MoveForward(endPosition);
-                }
-                else if (move == 'b')
-                {
-                    MoveBackward(endPosition);
-                }
-                else if (move == 'l')
-                {
-                    endPosition.Direction = endPosition.Direction - 1;
-                    if (endPosition.Direction < 0)
-                    {
-                        endPosition.Direction = Direction.W;
-                    }
-                }
-                else if (move == 'r')
-                {
-                    endPosition.Direction = (Direction)(((int)endPosition.Direction + 1) % 4);
+                    case 'f':
+                        MoveForward(endPosition);
+                        break;
+                    case 'b':
+                        MoveBackward(endPosition);
+                        break;
+                    case 'l':
+                        MoveRight(endPosition);
+                        break;
+                    case 'r':
+                        endPosition.Direction = (Direction)(((int)endPosition.Direction + 1) % 4);
+                        break;
                 }
             }
             
             return endPosition.ToString();
+        }
+
+        private void MoveRight(Position endPosition)
+        {
+            endPosition.Direction = endPosition.Direction - 1;
+            if (endPosition.Direction < 0)
+            {
+                endPosition.Direction = Direction.W;
+            }
         }
         private void MoveBackward(Position endPosition)
         {
