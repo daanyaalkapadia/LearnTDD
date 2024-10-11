@@ -131,7 +131,7 @@ namespace LearnTDD.Module_5
                         MoveBackward(endPosition);
                         break;
                     case 'l':
-                        MoveLeft(endPosition);
+                        TurnLeft(endPosition);
                         break;
                     case 'r':
                         endPosition.Direction = (Direction)(((int)endPosition.Direction + 1) % 4);
@@ -142,7 +142,7 @@ namespace LearnTDD.Module_5
             return endPosition.ToString();
         }
 
-        private void MoveLeft(Position endPosition)
+        private void TurnLeft(Position endPosition)
         {
             endPosition.Direction = endPosition.Direction - 1;
             if (endPosition.Direction < 0)
