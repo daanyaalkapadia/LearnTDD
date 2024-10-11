@@ -118,22 +118,27 @@ namespace LearnTDD.Module_5
             char[] validCommnad = ['f', 'b', 'l', 'r'];
 
             string[] positionArray = position.Split(',');
+            //Validate for Length
             if (positionArray.Length != 3)
             {
                 throw new ArgumentException("Invalid Input");
             }
+            //validate X co-ordinate values
             if (!int.TryParse(positionArray[1], out int xIndex) || xIndex < 0 || xIndex > 20)
             {
                 throw new ArgumentException("Invalid Input");
             }
+            //validate Y co-ordinate values
             if (!int.TryParse(positionArray[2], out int yIndex) || yIndex < 0 || yIndex > 20)
             {
                 throw new ArgumentException("Invalid Input");
             }
+            //validate command
             if (command.Length > 0 && !validCommnad.Any(x => command.Any(y => y == x)))
             {
                 throw new ArgumentException("Invalid Input");
             }
+            //validate direction
             if (!validDirection.Any(x => x == position[0]))
             {
                 throw new ArgumentException("Invalid Input");
