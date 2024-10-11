@@ -119,41 +119,11 @@ namespace LearnTDD.Module_5
 
             if (command == "f")
             {
-                if (endPosition.Direction == Direction.N)
-                {
-                    MoveOnYAxis(endPosition, "f");
-                }
-                else if (endPosition.Direction == Direction.S)
-                {
-                    MoveOnYAxis(endPosition, "b");
-                }
-                else if (endPosition.Direction == Direction.W)
-                {
-                    MoveOnXAxis(endPosition, "b");
-                }
-                else if (endPosition.Direction == Direction.E)
-                {
-                    MoveOnXAxis(endPosition, "f");
-                }
+                MoveForward(endPosition);
             }
             else if (command == "b")
             {
-                if (endPosition.Direction == Direction.N)
-                {
-                    MoveOnYAxis(endPosition, "b");
-                }
-                else if (endPosition.Direction == Direction.S)
-                {
-                    MoveOnYAxis(endPosition, "f");
-                }
-                else if (endPosition.Direction == Direction.W)
-                {
-                    MoveOnXAxis(endPosition, "f");
-                }
-                else if (endPosition.Direction == Direction.E)
-                {
-                    MoveOnXAxis(endPosition, "b");
-                }
+                MoveBackward(endPosition);
             }
             else if (command == "l")
             {
@@ -169,6 +139,44 @@ namespace LearnTDD.Module_5
             }
 
             return endPosition.ToString();
+        }
+        private void MoveBackward(Position endPosition)
+        {
+            if (endPosition.Direction == Direction.N)
+            {
+                MoveOnYAxis(endPosition, "b");
+            }
+            else if (endPosition.Direction == Direction.S)
+            {
+                MoveOnYAxis(endPosition, "f");
+            }
+            else if (endPosition.Direction == Direction.W)
+            {
+                MoveOnXAxis(endPosition, "f");
+            }
+            else if (endPosition.Direction == Direction.E)
+            {
+                MoveOnXAxis(endPosition, "b");
+            }
+        }
+        private void MoveForward(Position endPosition)
+        {
+            if (endPosition.Direction == Direction.N)
+            {
+                MoveOnYAxis(endPosition, "f");
+            }
+            else if (endPosition.Direction == Direction.S)
+            {
+                MoveOnYAxis(endPosition, "b");
+            }
+            else if (endPosition.Direction == Direction.W)
+            {
+                MoveOnXAxis(endPosition, "b");
+            }
+            else if (endPosition.Direction == Direction.E)
+            {
+                MoveOnXAxis(endPosition, "f");
+            }
         }
         private void MoveOnYAxis(Position position, string direction)
         {
