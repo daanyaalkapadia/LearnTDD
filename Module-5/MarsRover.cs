@@ -73,17 +73,17 @@ namespace LearnTDD.Module_5
         {
             char[] validDirection = ['N', 'S', 'E', 'W'];
             char[] validCommnad = ['f', 'b', 'l', 'r'];
-            
-            if(position.Length != 5)
-            {
-                throw new ArgumentException("Invalid Input");
-            }
-            if (position[1] != ',' || position[3] != ',')
+
+            if (position.Length < 5 || position.Length > 6)
             {
                 throw new ArgumentException("Invalid Input");
             }
             string[] positionArray = position.Split(',');
-            if (!int.TryParse(positionArray[1], out int xIndex) && xIndex >= 0 && xIndex <=20)
+            if (positionArray.Length != 3)
+            {
+                throw new ArgumentException("Invalid Input");
+            }
+            if (!int.TryParse(positionArray[1], out int xIndex) || xIndex < 0 || xIndex > 20)
             {
                 throw new ArgumentException("Invalid Input");
             }
