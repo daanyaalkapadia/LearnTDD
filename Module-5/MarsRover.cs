@@ -91,25 +91,25 @@ namespace LearnTDD.Module_5
             {
                 return endPosition.ToString();
             }
-            if(position == "S,10,10")
-            {
-                return "S,10,9";
-            }
-            if (position == "S,0,5")
-            {
-                return "S,0,4";
-            }
-            if (position == "S,0,0" && command =="f")
-            {
-                return "S,0,10";
-            }
             if (command == "f")
             {
-                endPosition.YPosition = (endPosition.YPosition + 1);
-                if(endPosition.YPosition > 10)
+                if(endPosition.Direction == "N")
                 {
-                    endPosition.YPosition = 0;
+                    endPosition.YPosition = (endPosition.YPosition + 1);
+                    if (endPosition.YPosition > 10)
+                    {
+                        endPosition.YPosition = 0;
+                    }
                 }
+                else if (endPosition.Direction == "S")
+                {
+                    endPosition.YPosition = (endPosition.YPosition - 1);
+                    if (endPosition.YPosition < 0)
+                    {
+                        endPosition.YPosition = 10;
+                    }
+                }
+
                 return endPosition.ToString();
             }
             if (position == "S,0,0" && command == "b")
