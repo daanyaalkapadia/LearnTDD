@@ -110,15 +110,11 @@ namespace LearnTDD.Module_5
             {
                 if (endPosition.Direction == Direction.N)
                 {
-                    endPosition.YPosition = (endPosition.YPosition + 1) % 11;
+                    MoveOnYAxis(endPosition, "f");
                 }
                 else if (endPosition.Direction == Direction.S)
                 {
-                    endPosition.YPosition = (endPosition.YPosition - 1);
-                    if (endPosition.YPosition < 0)
-                    {
-                        endPosition.YPosition = 10;
-                    }
+                    MoveOnYAxis(endPosition, "b");
                 }
                 else if (endPosition.Direction == Direction.W)
                 {
@@ -139,15 +135,11 @@ namespace LearnTDD.Module_5
             {
                 if (endPosition.Direction == Direction.N)
                 {
-                    endPosition.YPosition = (endPosition.YPosition - 1);
-                    if (endPosition.YPosition < 0)
-                    {
-                        endPosition.YPosition = 10;
-                    }
+                    MoveOnYAxis(endPosition, "b");
                 }
                 else if (endPosition.Direction == Direction.S)
                 {
-                    endPosition.YPosition = (endPosition.YPosition + 1) % 11;
+                    MoveOnYAxis(endPosition, "f");
                 }
                 else if (endPosition.Direction == Direction.W)
                 {
@@ -173,6 +165,21 @@ namespace LearnTDD.Module_5
                 return "N,0,0";
             }
             return endPosition.ToString();
+        }
+        private void MoveOnYAxis(Position position, string direction)
+        {
+            if(direction == "f")
+            {
+                position.YPosition = (position.YPosition + 1) % 11;
+            }
+            else if(direction == "b")
+            {
+                position.YPosition = (position.YPosition - 1);
+                if (position.YPosition < 0)
+                {
+                    position.YPosition = 10;
+                }
+            }
         }
 
         private Position ValidateInput(string position, string command)
