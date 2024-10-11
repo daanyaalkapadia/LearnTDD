@@ -177,16 +177,14 @@ namespace LearnTDD.Module_5
         {
             if (isForward)
             {
-                currentPosition = (currentPosition + 1) % (maxPosition + 1);
+                return (currentPosition + 1) % (maxPosition + 1);
             }
-            else
+            currentPosition--;
+            if (currentPosition < 0)
             {
-                currentPosition--;
-                if (currentPosition < 0)
-                {
-                    currentPosition = maxPosition;
-                }
+                currentPosition = maxPosition;
             }
+            
             return currentPosition;
         }
         private Position ValidateInput(string position, string command)
