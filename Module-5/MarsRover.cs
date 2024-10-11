@@ -100,11 +100,11 @@ namespace LearnTDD.Module_5
             }
             if (command == "f")
             {
-                if (endPosition.Direction == "N")
+                if (endPosition.Direction == Direction.N)
                 {
                     endPosition.YPosition = (endPosition.YPosition + 1) % 11;
                 }
-                else if (endPosition.Direction == "S")
+                else if (endPosition.Direction == Direction.S)
                 {
                     endPosition.YPosition = (endPosition.YPosition - 1);
                     if (endPosition.YPosition < 0)
@@ -112,7 +112,7 @@ namespace LearnTDD.Module_5
                         endPosition.YPosition = 10;
                     }
                 }
-                else if (endPosition.Direction == "W")
+                else if (endPosition.Direction == Direction.W)
                 {
                     endPosition.XPosition = (endPosition.XPosition - 1);
                     if (endPosition.XPosition < 0)
@@ -120,7 +120,7 @@ namespace LearnTDD.Module_5
                         endPosition.XPosition = 20;
                     }
                 }
-                else if (endPosition.Direction == "E")
+                else if (endPosition.Direction == Direction.E)
                 {
                     endPosition.XPosition = (endPosition.XPosition + 1) % 21;
                 }
@@ -182,14 +182,21 @@ namespace LearnTDD.Module_5
         {
             XPosition = x;
             YPosition = y;
-            Direction = direction;
+            Direction = (Direction)Enum.Parse(typeof(Direction), direction, true);
         }
         public int XPosition;
         public int YPosition;
-        public string Direction;
+        public Direction Direction;
         public override string ToString()
         {
-            return Direction + ',' + XPosition + "," + YPosition;
+            return Direction.ToString() + ',' + XPosition + "," + YPosition;
         }
+    }
+    public enum Direction
+    {
+        N = 0,
+        E = 1,
+        S = 2,
+        W = 3
     }
 }
