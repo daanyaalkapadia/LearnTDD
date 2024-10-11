@@ -43,6 +43,9 @@ namespace LearnTDD.Module_5
             //invalid x co-ordinate
             yield return new object[] { "W,-1,0", "f" };
             yield return new object[] { "W,21,0", "f" };
+            //invalid y co-ordinate
+            yield return new object[] { "W,0,s", "f" };
+            yield return new object[] { "W,0,99", "f" };
         }
         [Theory]
         [MemberData(nameof(ChangeTestDataForValidInput))]
@@ -84,6 +87,10 @@ namespace LearnTDD.Module_5
                 throw new ArgumentException("Invalid Input");
             }
             if (!int.TryParse(positionArray[1], out int xIndex) || xIndex < 0 || xIndex > 20)
+            {
+                throw new ArgumentException("Invalid Input");
+            }
+            if (!int.TryParse(positionArray[2], out int yIndex) || yIndex < 0 || yIndex > 20)
             {
                 throw new ArgumentException("Invalid Input");
             }
