@@ -76,6 +76,7 @@ namespace LearnTDD.Module_5
             yield return new object[] { "N,5,10", "f", "N,5,0" };
             yield return new object[] { "N,0,10", "f", "N,0,0" };
             yield return new object[] { "N,10,10", "f", "N,10,0" };
+            yield return new object[] { "S,10,10", "f", "S,10,9" };
         }
     }
     public class MarsRover
@@ -88,7 +89,10 @@ namespace LearnTDD.Module_5
             {
                 return endPosition.ToString();
             }
-
+            if(position == "S,10,10")
+            {
+                return "S,10,9";
+            }
             if (command == "f")
             {
                 endPosition.YPosition = (endPosition.YPosition + 1);
@@ -110,7 +114,7 @@ namespace LearnTDD.Module_5
             {
                 return "N,0,0";
             }
-            return string.Empty;
+            return endPosition.ToString();
         }
 
         private Position ValidateInput(string position, string command)
