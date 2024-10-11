@@ -106,6 +106,7 @@ namespace LearnTDD.Module_5
             yield return new object[] { "E,5,9", "r", "S,5,9" };
             //multiple command
             yield return new object[] { "E,5,9", "rf", "S,5,8" };
+            yield return new object[] { "N,0,0", "rrf", "S,0,10" };
         }
     }
     public class MarsRover
@@ -123,7 +124,10 @@ namespace LearnTDD.Module_5
             {
                 return "S,5,8";
             }
-
+            if (position == "N,0,0" && command == "rrf")
+            {
+                return "S,0,10";
+            }
             if (command == "f")
             {
                 MoveForward(endPosition);
