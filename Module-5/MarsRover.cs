@@ -117,7 +117,7 @@ namespace LearnTDD.Module_5
             char[] validDirection = ['N', 'S', 'E', 'W'];
             char[] validCommnad = ['f', 'b', 'l', 'r'];
 
-            if (position.Length < 5 || position.Length > 6)
+            if (position.Length < 5 || position.Length > 7)
             {
                 throw new ArgumentException("Invalid Input");
             }
