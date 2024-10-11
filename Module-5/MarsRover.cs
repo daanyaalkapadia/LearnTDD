@@ -106,14 +106,6 @@ namespace LearnTDD.Module_5
             {
                 return endPosition.ToString();
             }
-            if (position == "E,0,0" && command == "b")
-            {
-                return "E,20,0";
-            }
-            if (position == "E,5,9" && command == "b")
-            {
-                return "E,4,9";
-            }
             if (command == "f")
             {
                 if (endPosition.Direction == Direction.N)
@@ -160,6 +152,14 @@ namespace LearnTDD.Module_5
                 else if (endPosition.Direction == Direction.W)
                 {
                     endPosition.XPosition = (endPosition.XPosition + 1) % 21;
+                }
+                else if (endPosition.Direction == Direction.E)
+                {
+                    endPosition.XPosition = (endPosition.XPosition - 1);
+                    if (endPosition.XPosition < 0)
+                    {
+                        endPosition.XPosition = 20;
+                    }
                 }
                 return endPosition.ToString();
             }
