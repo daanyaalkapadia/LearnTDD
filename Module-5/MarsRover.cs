@@ -77,21 +77,10 @@ namespace LearnTDD.Module_5
         public string Drive(string position, string command)
         {
             var positionObj = ValidateInput(position, command);
-            if (position == "N,0,0" && command == "")
+            
+            if(command == "")
             {
-                return position;
-            }
-            if (position == "S,0,0" && command == "")
-            {
-                return position;
-            }
-            if (position == "E,0,0" && command == "")
-            {
-                return position;
-            }
-            if (position == "W,0,0" && command == "")
-            {
-                return position;
+                return positionObj.ToString();
             }
             if (position == "N,0,0" && command == "f")
             {
@@ -157,5 +146,9 @@ namespace LearnTDD.Module_5
         public int XPosition;
         public int YPosition;
         public string Direction;
+        public override string ToString()
+        {
+            return Direction + ',' + XPosition + "," + YPosition;
+        }
     }
 }
