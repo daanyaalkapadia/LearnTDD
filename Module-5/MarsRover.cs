@@ -128,10 +128,7 @@ namespace LearnTDD.Module_5
                         Move(endPosition, move);
                         break;
                     case 'b':
-                        if (endPosition.Direction == Direction.N || endPosition.Direction == Direction.E) 
-                            Move(endPosition, move);
-                        else
-                        MoveBackward(endPosition);
+                        Move(endPosition, move);
                         break;
                     case 'l':
                         TurnLeft(endPosition);
@@ -153,24 +150,6 @@ namespace LearnTDD.Module_5
                 endPosition.Direction = Direction.W;
             }
         }
-        private void MoveBackward(Position endPosition)
-        {
-            switch (endPosition.Direction)
-            {
-                case Direction.N:
-                    MoveOnYAxis(endPosition, 'b');
-                    break;
-                case Direction.S:
-                    MoveOnYAxis(endPosition, 'f');
-                    break;
-                case Direction.W:
-                    MoveOnXAxis(endPosition, 'f');
-                    break;
-                case Direction.E:
-                    MoveOnXAxis(endPosition, 'b');
-                    break;
-            }
-        }
         private void Move(Position endPosition, char direction)
         {
             switch (endPosition.Direction)
@@ -179,10 +158,10 @@ namespace LearnTDD.Module_5
                     MoveOnYAxis(endPosition, direction);
                     break;
                 case Direction.S:
-                    MoveOnYAxis(endPosition, direction == 'f' ? 'b' : direction);
+                    MoveOnYAxis(endPosition, direction == 'f' ? 'b' : 'f');
                     break;
                 case Direction.W:
-                    MoveOnXAxis(endPosition, direction == 'f' ? 'b' : direction);
+                    MoveOnXAxis(endPosition, direction == 'f' ? 'b' : 'f');
                     break;
                 case Direction.E:
                     MoveOnXAxis(endPosition, direction);
