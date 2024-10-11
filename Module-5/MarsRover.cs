@@ -157,13 +157,10 @@ namespace LearnTDD.Module_5
             }
             else if (command == "l")
             {
-                if (endPosition.Direction == Direction.N)
+                endPosition.Direction = endPosition.Direction - 1;
+                if(endPosition.Direction < 0)
                 {
                     endPosition.Direction = Direction.W;
-                }
-                else
-                {
-                    endPosition.Direction -= 1;
                 }
             }
             else if (command == "r")
