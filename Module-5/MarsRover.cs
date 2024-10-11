@@ -88,21 +88,14 @@ namespace LearnTDD.Module_5
             {
                 return endPosition.ToString();
             }
-            if(position== "N,5,10")
-            {
-                return "N,5,0";
-            }
-            if (position == "N,0,10")
-            {
-                return "N,0,0";
-            }
-            if (position == "N,10,10")
-            {
-                return "N,10,0";
-            }
+
             if (command == "f")
             {
-                endPosition.YPosition += 1;
+                endPosition.YPosition = (endPosition.YPosition + 1);
+                if(endPosition.YPosition > 10)
+                {
+                    endPosition.YPosition = 0;
+                }
                 return endPosition.ToString();
             }
             if (position == "S,0,0" && command == "b")
