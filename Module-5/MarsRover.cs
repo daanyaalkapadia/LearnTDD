@@ -161,10 +161,10 @@ namespace LearnTDD.Module_5
                     MoveOnYAxis(endPosition, direction == 'f' ? 'b' : 'f');
                     break;
                 case Direction.W:
-                    MoveOnXAxis(endPosition, direction == 'f' ? 'b' : 'f');
+                    endPosition.XPosition = MoveOnXAxis(endPosition.XPosition, direction == 'f' ? 'b' : 'f');
                     break;
                 case Direction.E:
-                    MoveOnXAxis(endPosition, direction);
+                    endPosition.XPosition = MoveOnXAxis(endPosition.XPosition, direction);
                     break;
             }
         }
@@ -183,20 +183,21 @@ namespace LearnTDD.Module_5
                 }
             }
         }
-        private void MoveOnXAxis(Position position, char direction)
+        private int MoveOnXAxis(int currentPosition, char direction)
         {
             if (direction == 'f')
             {
-                position.XPosition = (position.XPosition + 1) % 21;
+                currentPosition = (currentPosition + 1) % 21;
             }
             else if (direction == 'b')
             {
-                position.XPosition = (position.XPosition - 1);
-                if (position.XPosition < 0)
+                currentPosition--;
+                if (currentPosition < 0)
                 {
-                    position.XPosition = 20;
+                    currentPosition = 20;
                 }
             }
+            return currentPosition;
         }
         private Position ValidateInput(string position, string command)
         {
