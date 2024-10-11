@@ -112,7 +112,7 @@ namespace LearnTDD.Module_5
             return string.Empty;
         }
 
-        private void ValidateInput(string position, string command)
+        private Position ValidateInput(string position, string command)
         {
             char[] validDirection = ['N', 'S', 'E', 'W'];
             char[] validCommnad = ['f', 'b', 'l', 'r'];
@@ -142,6 +142,19 @@ namespace LearnTDD.Module_5
             {
                 throw new ArgumentException("Invalid Input");
             }
+            return new Position(xIndex, yIndex, positionArray[0]);
         }
+    }
+    public class Position
+    {
+        public Position(int x, int y, string direction)
+        {
+            XPosition = x;
+            YPosition = y;
+            Direction = direction;
+        }
+        public int XPosition;
+        public int YPosition;
+        public string Direction;
     }
 }
