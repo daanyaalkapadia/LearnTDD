@@ -18,11 +18,13 @@ namespace LearnTDD.Module_7
             _pokemonClassifier = new PokemonClassifier();
             _pokemonAPI = new Mock<IPokemonAPI>();
         }
-        [Fact]
-        public void Classify_Pokemon()
+        [Theory]
+        [InlineData(1, PokemonClassification.GodTier)]
+        public void Classify_Pokemon(int pokemonId, PokemonClassification expectedclassification)
         {
-            var classification = _pokemonClassifier.Classify(1);
-            classification.Should().Be(PokemonClassification.GodTier);
+            _pokemonAPI.Setup(x => x.GetPokemonById(pokemonId)).Returns(new Pokemon() { Name = "Charmander", Type = PokemonType.Fire });
+            var actualclassification = _pokemonClassifier.Classify(pokemonId);
+            actualclassification.Should().Be(expectedclassification);
         }
     }
     public class PokemonClassifier
