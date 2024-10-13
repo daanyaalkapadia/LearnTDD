@@ -13,10 +13,9 @@ namespace LearnTDD.Module_6
         [Fact]
         public void GetRandomBetween1And100ShouldBeCalled()
         {
-            var randomGeneratorMock = new Mock<IRandomGenerator>();
-            var oddDectector = new OddOrEvenDetector(randomGeneratorMock.Object);
+            var oddDectector = new OddOrEvenDetector(_randomGenerator.Object);
             oddDectector.IsRandomNumberOdd();
-            randomGeneratorMock.Verify(x => x.GetRandomBetween1And100(), Times.Once);
+            _randomGenerator.Verify(x => x.GetRandomBetween1And100(), Times.Once);
         }
         [Theory]
         [InlineData(1, true)]
