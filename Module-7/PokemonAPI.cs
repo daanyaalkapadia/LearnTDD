@@ -1,9 +1,4 @@
 ﻿using FluentAssertions;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace LearnTDD.Module_7
 {
@@ -20,7 +15,11 @@ namespace LearnTDD.Module_7
             pokemon.Type.Should().Be(pokemonType);
         }
     }
-    public class PokemonAPI
+    public interface IPokemonAPI
+    {
+        Pokemon GetPokemonById(int id);
+    }
+    public class PokemonAPI : IPokemonAPI
     {
         public Pokemon GetPokemonById(int id)
         {
