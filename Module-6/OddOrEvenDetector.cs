@@ -6,15 +6,16 @@ namespace LearnTDD.Module_6
     public class OddOrEvenDetectorShould
     {
         private Mock<IRandomGenerator> _randomGenerator;
+        private OddOrEvenDetector _oddOrEvenDetector;
         public OddOrEvenDetectorShould()
         {
             _randomGenerator = new Mock<IRandomGenerator>();
+            _oddOrEvenDetector = new OddOrEvenDetector(_randomGenerator.Object);
         }
         [Fact]
         public void GetRandomBetween1And100ShouldBeCalled()
         {
-            var oddDectector = new OddOrEvenDetector(_randomGenerator.Object);
-            oddDectector.IsRandomNumberOdd();
+            _oddOrEvenDetector.IsRandomNumberOdd();
             _randomGenerator.Verify(x => x.GetRandomBetween1And100(), Times.Once);
         }
         [Theory]
@@ -25,8 +26,7 @@ namespace LearnTDD.Module_6
         public void Return_IsRandomNumberOdd(int input, bool output)
         {
             _randomGenerator.Setup(x => x.GetRandomBetween1And100()).Returns(input);
-            var oddDectector = new OddOrEvenDetector(_randomGenerator.Object);
-            var result = oddDectector.IsRandomNumberOdd();
+            var result = _oddOrEvenDetector.IsRandomNumberOdd();
             result.Should().Be(output);
         }
     }
