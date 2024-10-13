@@ -1,4 +1,5 @@
-﻿using Moq;
+﻿using FluentAssertions;
+using Moq;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,13 +10,28 @@ namespace LearnTDD.Module_6
 {
     public class OddOrEvenDetectorShould
     {
+        private Mock<IRandomGenerator> _randomGenerator;
+        public OddOrEvenDetectorShould()
+        {
+            _randomGenerator = new Mock<IRandomGenerator>();
+        }
         [Fact]
-        public void ReturnIsRandomNumberOdd()
+        public void GetRandomBetween1And100ShouldBeCalled()
         {
             var randomGeneratorMock = new Mock<IRandomGenerator>();
             var oddDectector = new OddOrEvenDetector(randomGeneratorMock.Object);
             oddDectector.IsRandomNumberOdd();
             randomGeneratorMock.Verify(x => x.GetRandomBetween1And100(), Times.Once);
+        }
+        [Theory]
+        [InlineData(1, true)]
+        [InlineData(3, true)]
+        public void Return_IsRandomNumberOdd(int input, bool output)
+        {
+            _randomGenerator.Setup(x => x.GetRandomBetween1And100()).Returns(0);
+            var oddDectector = new OddOrEvenDetector(_randomGenerator.Object);
+            var result = oddDectector.IsRandomNumberOdd();
+            result.Should().Be(output);
         }
     }
     public class OddOrEvenDetector
