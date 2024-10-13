@@ -1,10 +1,5 @@
 ﻿using FluentAssertions;
 using Moq;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace LearnTDD.Module_6
 {
@@ -47,11 +42,8 @@ namespace LearnTDD.Module_6
         public bool IsRandomNumberOdd()
         {
             var number = _randomGenerator.GetRandomBetween1And100();
-            if(number % 2 == 0)
-            {
-                return false;
-            }
-            return true;
+
+            return number % 2 == 0 ? false : true;
         }
     }
 
