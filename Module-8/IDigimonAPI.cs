@@ -8,6 +8,6 @@ namespace LearnTDD.Module_8
 {
     public interface IDigimonAPI
     {
-        string GetNameById(string token, int id);
+        Task<string> GetNameById(string token, int id);
     }
 }

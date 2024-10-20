@@ -2,6 +2,6 @@
 {
     public interface IDigimonAuthenticationAPI
     {
-        string GetToken(string login, string password);
+        Task<string> GetToken(string login, string password);
     }
 }
