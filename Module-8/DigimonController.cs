@@ -17,9 +17,10 @@ namespace LearnTDD.Module_8
         }
 
         [Theory]
-        [InlineData("dk", "dk", 1, "valid-token", "Daanyaal")]
-        public async Task Return_Name_When_Valid_Credentials(string login, string password, int id, string token, string expectedName)
+        [InlineData("dk", "dk", 1, "Daanyaal")]
+        public async Task Return_Name_When_Valid_Credentials(string login, string password, int id, string expectedName)
         {
+            string token = "valid-token";
             _digimonAuthenticationAPI.Setup(x => x.GetToken(login, password)).ReturnsAsync(token);
             _digimonAPI.Setup(x => x.GetNameById(token, id)).ReturnsAsync(expectedName);
 
@@ -40,9 +41,10 @@ namespace LearnTDD.Module_8
         }
 
         [Theory]
-        [InlineData("dk", "dk", 1, "valid-token")]
-        public async Task Throw_ApiException_When_Api_Fails(string login, string password, int id, string token)
+        [InlineData("dk", "dk", 1)]
+        public async Task Throw_ApiException_When_Api_Fails(string login, string password, int id)
         {
+            string token = "valid-token";
             _digimonAuthenticationAPI.Setup(x => x.GetToken(login, password)).ReturnsAsync(token);
             _digimonAPI.Setup(x => x.GetNameById(token, id)).ThrowsAsync(new Exception("API error"));
 
@@ -52,9 +54,10 @@ namespace LearnTDD.Module_8
         }
 
         [Theory]
-        [InlineData("dk", "dk", 45, "valid-token")]
-        public async Task Throw_KeyNotFoundException_When_Digimon_Not_Found(string login, string password, int id, string token)
+        [InlineData("dk", "dk", 45)]
+        public async Task Throw_KeyNotFoundException_When_Digimon_Not_Found(string login, string password, int id)
         {
+            string token = "valid-token";
             _digimonAuthenticationAPI.Setup(x => x.GetToken(login, password)).ReturnsAsync(token);
             _digimonAPI.Setup(x => x.GetNameById(token, id)).ThrowsAsync(new KeyNotFoundException("Digimon not found"));
 
