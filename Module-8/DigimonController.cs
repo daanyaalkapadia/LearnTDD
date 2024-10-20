@@ -15,15 +15,13 @@ namespace LearnTDD.Module_8
             _digitalController = new DigimonController();
         }
 
-        [Fact]
-        public void Return_Name()
+        [Theory]
+        [InlineData("dk","dk",1, "")]
+        public void Return_Name(string login, string password, int id, string expectedName)
         {
-            string login = "dk";
-            string password = "dk";
-            int id = 1;
             var result = _digitalController.GetNameById(login, password, id);
 
-            result.Should().Be("");
+            result.Should().Be(expectedName);
         }
     }
     public class DigimonController
