@@ -35,6 +35,16 @@ namespace LearnTDD.Module_8
 
             await act.Should().ThrowAsync<UnauthorizedAccessException>();
         }
+        [Theory]
+        [InlineData("dk", "dk", 1, "arkaldjfasdion", "Daanyaal")]
+        public async Task Have_API_Exception(string login, string password, int id, string token, string expectedName)
+        {
+            _digimonAuthenticationAPI.Setup(x => x.GetToken(login, password)).ReturnsAsync(token);
+            _digimonAPI.Setup(x => x.GetNameById(token, id)).ThrowsAsync(new Exception());
+            Func<Task<string>> act = async () => await _digitalController.GetNameById(login, password, id);
+
+            await act.Should().ThrowAsync<Exception>();
+        }
     }
     public class DigimonController
     {
